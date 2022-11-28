@@ -1,0 +1,262 @@
+
+
+
+<!-- partial -->
+<div class="content-wrapper">
+  <div class=" ">
+    <div class=" pb-0">
+
+
+      <div class="row">
+        <div class="header-right mt-md-2 mt-lg-0 w-100">
+          <div class=" align-items-center d-inline-block">
+            <a href="transaction">
+              <p class="m-0 pe-3">Process Override</p>
+            </a>
+            <a class="ps-3 me-4">
+              <p class="m-0">Intra Company Transfer </p>
+            </a>
+          </div>
+          <!-- <div class=""  style="display: inline-block;  float: right;">
+            <button type="button" (click)="backButtonClick()" class=" btn btn-sm btn-success btn-icon-text" style="height:30px">
+              <i class="mdi mdi-arrow-left"></i> Back</button>
+          </div> -->
+        </div>
+      </div>
+     
+
+      <div class="col-lg-12 grid-margin stretch-card mt-3">
+        <div class="card">
+          <div class="card-body">
+
+            <div class="mb-3">
+              <h3 class="d-inline-block"> Intra Company Transfer </h3>
+              <!-- <button type="button" class="float-end btn btn-sm btn-primary mt-2 mt-sm-0 btn-icon-text">
+                <i class="mdi mdi-plus-circle"></i> Add Store </button> -->
+            </div>
+
+            <div class="clearfix"></div>
+            
+            <div class="product-filters">
+              <form [formGroup]="storeTransferfrom" (ngSubmit)="onStoreSupplierMasterSubmit()">
+                <div class="card">
+                  <div class="card-body">
+                
+                    <div class="row">
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <mat-form-field class="pt-2">
+                            <input matInput [matDatepicker]="picker" [max]="Time_Key" formControlName="Time_Key"
+                              placeholder="Choose a date" />
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                  
+
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label for="exampleFormControlSelect3">Store ID</label>
+                      <input type="text" class="form-control form-control-sm" placeholder="Store ID" formControlName="Store_Key" aria-label="Username" />
+                    </div>
+                  </div>
+                 
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <!-- <label for="exampleFormControlSelect3">Store Name</label>
+                      <select class="form-control form-control-sm" id="exampleFormControlSelect1" formControlName="Store_Name">
+                      <option *ngFor="let store of storeNameList" [value]="store.store_name">{{store.store_name}}</option>                      
+                      </select> -->
+                      <mat-form-field>
+                        <mat-label>Store Name</mat-label>
+                        <input type="text" matInput [formControl]="Store_Name" [(ngModel)]="storenamefield" [matAutocomplete]="auto">
+                        <mat-autocomplete #auto="matAutocomplete">
+                          <mat-option *ngFor="let store of storeNameList | async" [value]="store.store_name">
+                            {{store.store_name}}
+                          </mat-option>
+                        </mat-autocomplete>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                    <div class="col-md-3">
+                    <div class="form-group">
+                      <label for="exampleFormControlSelect3">SKU Code</label>
+                      <input type="text" class="form-control form-control-sm" placeholder="SKU Code"  formControlName="SKU_ID" aria-label="Username" />
+                    </div>
+                  </div>  
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <!-- <label for="exampleFormControlSelect3">Product Name</label>
+                      <select class="form-control form-control-sm" formControlName="Product_Name">
+                      <option *ngFor="let product of productNameList" [value]="product.prod_name">{{product.prod_name}}</option>
+                      </select>                         -->
+                      <mat-form-field>
+                        <mat-label>Product Name</mat-label>
+                        <input type="text" matInput [formControl]="Product_Name" [(ngModel)]="productnamefield" [matAutocomplete]="auto1">
+                        <mat-autocomplete #auto1="matAutocomplete">
+                          <mat-option *ngFor="let product of productNameList | async" [value]="product.prod_name">
+                            {{product.prod_name}}
+                          </mat-option>
+                        </mat-autocomplete>
+                      </mat-form-field>
+                    </div>
+                  </div>
+
+                  
+                  <div class="col-md-3">
+                    <br>
+                  <button type="submit" class=" btn btn-sm btn-success mt-2 mt-sm-0 btn-icon-text">
+                    <i class="mdi mdi-checkbox-marked-circle-outline"></i> Filter </button>
+                  <button type="button" class=" btn btn-sm btn-success mt-2 mt-sm-0 btn-icon-text" style="margin-left: 15px;" (click)="onClear()">
+                    <i class="mdi mdi-checkbox-marked-circle-outline"></i> Clear </button>  
+                  </div>
+
+                  </div>
+
+                  </div>
+                </div>
+              
+              
+            <div class="clearfix"></div>
+            <div class="table-responsive">
+              <table mat-table [dataSource]="storeTransferMasterData" *ngIf="!!storeTransferMasterData" matSort
+                class="mat-elevation-z8 w-100">
+                <ng-container matColumnDef="prod_name">
+                  <th mat-header-cell *matHeaderCellDef style="width: 250px;" scope="col">
+                    <label mat-sort-header>
+                      Product Name
+                    </label>
+                  </th>
+                  <td mat-cell *matCellDef="let element"> {{element.prod_name}} </td>
+                </ng-container>
+
+                <!-- <ng-container matColumnDef="Product_Key">
+                  <th mat-header-cell *matHeaderCellDef scope="col">
+                    <label mat-sort-header>
+                      Product Key
+                    </label>
+                  </th>
+                  <td mat-cell *matCellDef="let element"> {{element.Product_Key}} </td>
+                </ng-container> -->
+
+
+                <ng-container matColumnDef="sku_id">
+                  <th mat-header-cell *matHeaderCellDef scope="col">
+                    <label mat-sort-header>
+                      SKU ID
+                    </label>
+                  </th>
+                  <td mat-cell *matCellDef="let element"> {{element.sku_id}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="store_name">
+                  <th mat-header-cell *matHeaderCellDef scope="col">
+                    <label mat-sort-header>
+                      Store Name
+                    </label>
+                  </th>
+                  <td mat-cell *matCellDef="let element"> {{element.store_name}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="store_id">
+                  <th mat-header-cell *matHeaderCellDef scope="col">
+                    <label mat-sort-header>
+                      Store Id
+                    </label>
+                  </th>
+                  <td mat-cell *matCellDef="let element"> {{element.store_id}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="phy_stock_on_hand">
+                  <th mat-header-cell *matHeaderCellDef scope="col">
+                    <label mat-sort-header>
+                      Available Qty
+                    </label>
+                  </th>
+                  <td mat-cell *matCellDef="let element">
+                    {{element.phy_stock_on_hand}}
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Transfer_Qty">
+                  <th mat-header-cell *matHeaderCellDef scope="col">
+                    <label mat-sort-header>
+                     Transfer Qty
+                    </label>
+                  </th>
+                  <td mat-cell *matCellDef="let element">
+                  {{element.transferqty}}
+                  <!-- <input  *ngIf="element.editMode" style="width:90px;" placeholder="Qty" formControlName="transferqty"
+                  /> -->
+                  <input  style="width:90px;" placeholder="Qty" id="transferqty" formControlName="transferqty" />
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Transfer_to_Store">
+                  <th mat-header-cell *matHeaderCellDef scope="col">
+                    <label mat-sort-header>
+                      Transferd Strore Name
+                    </label>
+                  </th>
+                  <td mat-cell *matCellDef="let element">
+                    {{element.Transfer_Qty_Name}}
+                    <!-- <select *ngIf="element.editMode" class="form-control form-control-sm" id="exampleFormControlSelect1" formControlName="Store_Name">
+                     <option *ngFor="let store of storeNameList" [value]="store.Store_Key">{{store.Store_Name}}</option>                      
+                    </select> -->
+
+                    <select  class="form-control form-control-sm" id="exampleFormControlSelect1" formControlName="Store_Name">
+                      <option *ngFor="let store of storeNameList2" [value]="store.store_id">{{store.store_name}}</option>                      
+                     </select>
+
+                    <!-- <input  *ngIf="element.editMode" style="width:90px;" placeholder="Qty"
+                  /> -->
+
+                  </td>
+                </ng-container>
+                
+                
+               
+                <ng-container matColumnDef="Actions">
+                  <th mat-header-cell *matHeaderCellDef style="width: 50px;" scope="col">
+                    <label>
+                      Actions
+                    </label>
+                  </th>
+                  <td mat-cell *matCellDef="let element">
+                    <span style="cursor: pointer;">
+                      <i class="fa fa-pencil-square-o" aria-hidden="true" (click)="onProdEdit(element)"
+                        *ngIf="!element.editMode"></i> &nbsp;
+                      <i class="fa fa-floppy-o" aria-hidden="true" (click)="onProdSave(element)"
+                        *ngIf="element.editMode"></i>
+                    </span>
+                  </td>
+                </ng-container>
+                
+               
+                <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
+              </table>
+              <mat-paginator [pageSize]="pageSize" [hidden]="!storeTransferMasterData" [pageSizeOptions]="[10, 25, 50]"
+                aria-label="Select page">
+              </mat-paginator>
+            </div>
+          </form>
+              
+
+        </div>
+            
+            
+          </div>
+        </div>
+      </div>
+      
+      
+      
+    </div>
+    <!-- content-wrapper ends -->
+   
+  </div>
+  <!-- main-panel ends -->
+</div>
+<!-- page-body-wrapper ends -->

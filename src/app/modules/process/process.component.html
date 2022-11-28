@@ -1,0 +1,430 @@
+<!-- partial -->
+<div class="content-wrapper">
+  <div class=" ">
+    <div class="pb-0">
+
+      <!-- first row starts here -->
+
+      <div class="row">
+        <div class="header-right d-flex  mt-md-2 mt-lg-0 w-100">
+          <div class="d-flex align-items-center">
+            <a href="#">
+              <p class="m-0 pe-3"> Process Override</p>
+            </a>
+            <a class="ps-3 me-4" href="#">
+              <p class="m-0">Reorder Quantity Review</p>
+            </a>
+          </div>
+          <!-- <div class="float-right" style="flex-direction: row-reverse;">
+              <button type="button" class=" btn btn-primary mt-2 mt-sm-0 btn-icon-text">
+                <i class="mdi mdi-plus-circle"></i> Add Prodcut </button>
+            </div> -->
+        </div>
+      </div>
+
+      <div class="col-lg-12 grid-margin stretch-card mt-3">
+        <div class="card">
+          <div class="card-body">
+
+            <div class="mb-3">
+              <h3 class="d-inline-block"> Reorder Quantity Review </h3>
+              <form [formGroup]="blanketOverrideForm" (ngSubmit)="onBlanketSubmit()"
+                style="display:inline-block; float:right">
+                <input type="number" placeholder="Override Val"
+                  style="border: none; width:120px;
+                outline: 0px; border-bottom: 1px solid #474747; border-radius: 0px; background: transparent; height: 34px;" formControlName="BlanketValue" />
+                <button type="submit" class="btn btn-sm btn-primary"> Override </button>
+              </form>
+            </div>
+
+            <div class="clearfix"></div>
+            <div class="product-filters">
+
+              <div class="card">
+                <div class="card-body">
+
+                  <form [formGroup]="processForm" (ngSubmit)="onSubmit()">
+                    <div class="row">
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <mat-form-field class="pt-2">
+                            <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Choose a date"
+                              [min]="minDate"  />
+
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                          </mat-form-field>
+                        </div>
+                      </div>
+
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <!-- <label for="exampleFormControlSelect1">Store Name</label> -->
+                          <!-- <input type="text" class="form-control form-control-sm" placeholder="Store Name"
+                            aria-label="Username" placeholder="Store_Name" formControlName="storeName" /> -->
+                          <!-- <select class="form-control form-control-sm" id="exampleFormControlSelect1"
+                            formControlName="store_name">
+                            <option *ngFor="let store of storeNameList" [value]="store.store_name">{{store.store_name}}
+                            </option>
+
+                          </select> -->
+                          <mat-form-field >
+                            <mat-label>Store Name</mat-label>
+                            <input type="text" matInput [formControl]="StoreName" [(ngModel)]="storeNameField" [matAutocomplete]="auto1">
+                            <mat-autocomplete #auto1="matAutocomplete"  >
+                              <mat-option *ngFor="let store of storeNameList | async" [value]="store.store_name">
+                                {{store.store_name}}
+                              </mat-option>
+                            </mat-autocomplete>
+                          </mat-form-field>
+                        </div>
+                      </div>
+
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <!-- <label for="exampleFormControlSelect2">Product Categories</label>
+                          <select class="form-control form-control-sm" formControlName="ProductCateg"
+                            (change)="getSubCategorysList()">
+                            <option *ngFor="let category of categoryNameList" [value]="category.prod_cat">
+                              {{category.prod_cat}}</option>
+                          </select> -->
+                          <mat-form-field >
+                            <mat-label>Product Categories</mat-label>
+                            <input type="text" matInput [formControl]="ProductCateg" [(ngModel)]="categoryNameField" [matAutocomplete]="auto">
+                            <mat-autocomplete #auto="matAutocomplete"  (optionSelected)="getSubCategorysList()" >
+                              <mat-option *ngFor="let option of categoryNameList | async" [value]="option.prod_cat">
+                                {{option.prod_cat}}
+                              </mat-option>
+                            </mat-autocomplete>
+                          </mat-form-field>
+                        </div>
+                      </div>
+
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <!-- <label for="exampleFormControlSelect2">Sub Categories</label>
+                          <select class="form-control form-control-sm" formControlName="SubCategories">
+                            <option *ngFor="let subProduct of subCategoryNameList" [value]="subProduct.prod_subcat">
+                              {{subProduct.prod_subcat}}</option>
+                          </select> -->
+                          <mat-form-field >
+                            <mat-label>Sub Categories</mat-label>
+                            <input type="text" matInput [formControl]="SubCategories" [(ngModel)]="subcategoryNameField" [matAutocomplete]="auto3">
+                            <mat-autocomplete #auto3="matAutocomplete">
+                              <mat-option *ngFor="let subProduct of subCategoryNameList | async" [value]="subProduct.prod_subcat">
+                                {{subProduct.prod_subcat}}
+                              </mat-option>
+                            </mat-autocomplete>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label for="exampleFormControlSelect2">ABC Class</label>
+                          <select class="form-control form-control-sm" id="exampleFormControlSelect1"
+                            formControlName="abcClass" placeholder="ABC_Class">
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <!-- <div class="col-md-3">
+                    <div class="form-group">
+                      <label for="exampleFormControlSelect1">Product Type</label>
+                      <select class="form-control form-control-sm" id="exampleFormControlSelect1">
+                        <option>Select All</option>
+                        <option>Product Type1 </option>
+                        <option>Product Type2</option>
+                        <option>Product Type3</option>
+
+                      </select>
+                    </div>
+                  </div> -->
+
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <!-- <label for="exampleFormControlSelect1">Product Name</label>
+                          <select class="form-control form-control-sm" formControlName="ProductName">
+                            <option *ngFor="let products of productNameList" [value]="products.prod_name">
+                              {{products.prod_name}}</option>
+                          </select> -->
+                          <mat-form-field >
+                            <mat-label>Product Name</mat-label>
+                            <input type="text" matInput [formControl]="ProductName" [(ngModel)]="productNameField" [matAutocomplete]="auto2">
+                            <mat-autocomplete #auto2="matAutocomplete" >
+                              <mat-option *ngFor="let products of productNameList | async" [value]="products.prod_name">
+                                {{products.prod_name}}
+                              </mat-option>
+                            </mat-autocomplete>
+                          </mat-form-field>
+                        </div>
+                      </div>
+
+
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label for="exampleFormControlSelect3"> SKU Code</label>
+                          <input type="text" class="form-control form-control-sm" placeholder="SKU Code"
+                            aria-label="Username" placeholder="SKU_CODE" formControlName='SKU_CODE'  />
+                        </div>
+                      </div>
+
+                      <!-- <div class="col-md-3">
+                    <div class="form-group">
+                      <label for="exampleFormControlSelect1">Country </label>
+                      <input type="text" class="form-control form-control-sm" placeholder="Product Name" aria-label="Username" />
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label for="exampleFormControlSelect1">State </label>
+                      <input type="text" class="form-control form-control-sm" placeholder="Product Name" aria-label="Username" />
+                    </div>
+                  </div>
+                  
+                <div class="col-md-3">
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">City </label>
+                  <input type="text" class="form-control form-control-sm" placeholder="Product Name" aria-label="Username" />
+                </div>
+              </div> -->
+                      <div class="col-md-3">
+                        <br>
+                        <button type="submit" class=" btn btn-sm btn-success mt-2 mt-sm-0 btn-icon-text">
+                          <i class="mdi mdi-checkbox-marked-circle-outline"></i> Filter </button>
+                        <button type="button" class=" btn btn-sm btn-success mt-2 mt-sm-0 btn-icon-text"
+                          style="margin-left: 15px;" (click)="onClear()">
+                          <i class="mdi mdi-checkbox-marked-circle-outline"></i> Clear </button>
+                      </div>
+
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <h6> Reorder Frequency: <b> Daily</b></h6>
+
+                    </div>
+
+                    <div class="col-md-6">
+                      <h6> Reorder Level: <b> Store </b></h6>
+
+                    </div>
+
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+
+            <div class="filter-table-data mt-3">
+              <div class="table-responsive table-stripe">
+                <table mat-table [dataSource]="processData" *ngIf="!!processData" matSort
+                  class="mat-datagrid w-100 table-bordered">
+
+                  <!-- <ng-container matColumnDef="Time_key">
+                    <th mat-header-cell *matHeaderCellDef  scope="col">
+                      <label mat-sort-header>
+                        Date
+                      </label>
+                    </th>
+                    <td mat-cell *matCellDef="let element"> {{element.Time_key | date: 'dd/MM/yyyy'}} </td>
+                  </ng-container> -->
+
+                  <ng-container matColumnDef="store_name">
+                    <th mat-header-cell *matHeaderCellDef style="width: 250px;" scope="col">
+                      <label mat-sort-header>
+                        Store Name
+                      </label>
+                    </th>
+                    <td mat-cell *matCellDef="let element"> {{element.store_name}} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="prod_cat">
+                    <th mat-header-cell *matHeaderCellDef scope="col">
+                      <label mat-sort-header>
+                        Category Name
+                      </label>
+                    </th>
+                    <td mat-cell *matCellDef="let element"> {{element.prod_cat}} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="prod_subcat">
+                    <th mat-header-cell *matHeaderCellDef scope="col">
+                      <label mat-sort-header>
+                        Subcategory Name
+                      </label>
+                    </th>
+                    <td mat-cell *matCellDef="let element"> {{element.prod_subcat}} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="prod_name">
+                    <th mat-header-cell *matHeaderCellDef style="width: 250px;" scope="col">
+                      <label mat-sort-header>
+                        Product Name
+                      </label>
+                    </th>
+                    <td mat-cell *matCellDef="let element"> {{element.prod_name}} </td>
+                  </ng-container>
+
+
+                  <ng-container matColumnDef="sku_id">
+                    <th mat-header-cell *matHeaderCellDef scope="col">
+                      <label mat-sort-header>
+                        SKUCode
+                      </label>
+                    </th>
+                    <td mat-cell *matCellDef="let element"> {{element.sku_id}} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="phy_Stock_on_hand">
+                    <th mat-header-cell *matHeaderCellDef scope="col">
+                      <label mat-sort-header>
+                        phy_Stock_on_hand
+                      </label>
+                    </th>
+                    <td mat-cell *matCellDef="let element"> {{element.phy_Stock_on_hand}} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="demand_forecast">
+                    <th mat-header-cell *matHeaderCellDef scope="col">
+                      <label mat-sort-header>
+                        demand_forecast
+                      </label>
+                    </th>
+                    <td mat-cell *matCellDef="let element"> {{element.demand_forecast}} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="transit_stock">
+                    <th mat-header-cell *matHeaderCellDef scope="col">
+                      <label mat-sort-header>
+                        transit_stock
+                      </label>
+                    </th>
+                    <td mat-cell *matCellDef="let element"> {{element.transit_stock}} </td>
+                  </ng-container>
+
+
+                  <ng-container matColumnDef="proposed_qty">
+                    <th mat-header-cell *matHeaderCellDef scope="col">
+                      <label mat-sort-header>
+                        Proposed_qty
+                      </label>
+                    </th>
+                    <td mat-cell *matCellDef="let element"> {{element.proposed_qty}} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="final_qty">
+                    <th mat-header-cell *matHeaderCellDef scope="col">
+                      <label>
+                        Final_qty
+                      </label>
+                    </th>
+                    <td mat-cell *matCellDef="let element">
+                      <section *ngIf="!element.editMode">{{element.final_qty}}</section>
+                      <input type="number" *ngIf="element.editMode" style="width:90px;" placeholder="Qty"
+                        [(ngModel)]="overrideReorder" />
+                    </td>
+                  </ng-container>
+
+                  <!-- <ng-container matColumnDef="Expected_delivary_Date">
+                    <th mat-header-cell *matHeaderCellDef scope="col">
+                      <label mat-sort-header>
+                        Expected Delivery Data
+                      </label>
+                    </th>
+                    <td mat-cell *matCellDef="let element"> {{element.Expected_delivary_Date | date: 'dd/MM/yyyy'}}
+                    </td>
+                  </ng-container> -->
+
+                  <!-- <ng-container matColumnDef="supp_name">
+                    <th mat-header-cell *matHeaderCellDef scope="col">
+                      <label mat-sort-header>
+                        Supplier Name
+                      </label>
+                    </th>
+                    <td mat-cell *matCellDef="let element"> {{element.supp_name}} </td>
+                  </ng-container> -->
+
+                  <ng-container matColumnDef="Actions">
+                    <th mat-header-cell *matHeaderCellDef style="width: 50px;" scope="col">
+                      <label>
+                        Actions
+                      </label>
+                    </th>
+                    <td mat-cell *matCellDef="let element">
+                      <span style="cursor: pointer;">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true" (click)="onProdEdit(element)"
+                          *ngIf="!element.editMode"></i> &nbsp;
+                        <i class="fa fa-floppy-o" aria-hidden="true" (click)="onProdSave(element)"
+                          *ngIf="element.editMode"></i>
+                      </span>
+                    </td>
+                  </ng-container>
+
+                  <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
+                </table>
+                <mat-paginator [pageSize]="pageSize" [hidden]="!processData" [pageSizeOptions]="[10, 25, 50]"
+                  aria-label="Select page">
+                </mat-paginator>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <thead>
+        <tr>
+          <th> Product Name</th>
+          <th> SKU <br>Code</th>
+          <th> Re-Ordered <br>Qty</th>
+          <th> Overrider <br>Re-order <br>Qty</th>
+          <th> Expected <br>Delivery Data </th>
+          <th> Supplier Name <br>Qty</th>
+          <th> Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr>
+          <td> Sony 43inch LED 4K </td>
+          <td> SN12345</td>
+          <td> 50 </td>
+          <td width="100"> <input type="text" class="form-control form-control-sm" placeholder="Qty" />
+          </td>
+          <td> 24-06-2022 </td>
+          <td> David Lee</td>
+          <td> <span class="btn btn-sm btn-primary d-inline-block"> Edit </span> &nbsp; </td>
+        </tr>
+
+        <tr>
+          <td> Dell Mouse </td>
+          <td> SN45565</td>
+          <td> 100 </td>
+          <td width="100"> <input type="text" class="form-control form-control-sm" placeholder="Qty" />
+          </td>
+          <td> 25-06-2022 </td>
+          <td> David Lee</td>
+          <td> <span class="btn btn-sm btn-primary d-inline-block"> Edit </span> &nbsp; </td>
+        </tr>
+
+        <tr>
+          <td> HP Laptops 8550 11zen 8gb ram 512SSD HD </td>
+          <td> SN45675</td>
+          <td> 10 </td>
+          <td width="100"> <input type="text" class="form-control form-control-sm" placeholder="Qty" />
+          </td>
+          <td> 28-06-2022 </td>
+          <td> David Lee</td>
+          <td> <span class="btn btn-sm btn-primary d-inline-block"> Edit </span> &nbsp; </td>
+        </tr>
+
+      </tbody> -->
