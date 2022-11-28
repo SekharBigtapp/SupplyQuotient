@@ -52,7 +52,7 @@ export class TopBarComponent implements OnInit {
     //debugger;
     let obj= {
       "Username": this.username,
-      "Token_generated": localStorage.getItem("token")
+      "Token_generated": localStorage.getItem("Token_generated")
     }
 
         
