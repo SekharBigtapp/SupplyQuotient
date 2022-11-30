@@ -9,11 +9,15 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { AdminRoutingModule } from './admin.routing.module';
 import { AdminComponent } from './admin.component';
+import { DialogComponent } from 'src/app/dialog/dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 
 @NgModule({
   declarations: [
    // AdminComponent
+   DialogComponent
   ],
   imports: [
     CommonModule,
@@ -26,6 +30,7 @@ import { AdminComponent } from './admin.component';
     MatInputModule,
     MatFormFieldModule,
     MatSelectModule,
+    MatDialogModule
   ]
 })
 export class AdminModule { }

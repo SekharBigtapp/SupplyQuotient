@@ -51,6 +51,13 @@ import { LoginComponent } from './modules/auth/login/login.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { AuthGuard } from './core/services/auth/auth.service';
 import { DataStorageService } from './core/services/data-storage.service';
+import { UsersComponent } from './modules/admin/users/users.component';
+import { AddUserComponent } from './modules/admin/users/add-user/add-user.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDialogModule } from '@angular/material/dialog';
+import { NotificationComponent } from './shared/notification/notification.component';
+import { DialogComponent } from './dialog/dialog.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -87,6 +94,10 @@ import { DataStorageService } from './core/services/data-storage.service';
     // SystemconfigComponent,
     // StoreStoreTransferConfigComponent,
     // SchedulingConfigComponent,
+    UsersComponent,
+    AddUserComponent,
+    NotificationComponent,
+    //DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -104,7 +115,10 @@ import { DataStorageService } from './core/services/data-storage.service';
     MatNativeDateModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSelectModule,
     MatAutocompleteModule,
+    MatDialogModule,
+    MatSnackBarModule,
 
 
     

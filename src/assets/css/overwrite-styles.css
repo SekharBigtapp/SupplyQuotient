@@ -108,7 +108,7 @@ background: linear-gradient(to right, #dcd5e6, #bbb3cf);
 .table-responsive tbody tr:nth-child(odd) {
   background-color: #f7f7f7;
 }
-th.mat-header-cell:first-of-type { padding-left: 0px !important;}
+th.mat-header-cell:first-of-type { padding-left: 15px !important;}
 .mat-table thead th label {       padding: 0.75rem;} 
 td.mat-cell { padding: 5px 10px !important;} 
 .master-data h4 {font-size: 16px;}
@@ -121,7 +121,7 @@ app-header {height: 60px;}
 .table-responsive tbody tr:nth-child(odd) {
   background-color: #f7f7f7;
 }
-th.mat-header-cell:first-of-type { padding-left: 0px !important;}
+
 .mat-table thead th label {       padding: 0.75rem;} 
 td.mat-cell { padding: 5px 10px !important;} 
 .master-data h4 {font-size: 16px;}
@@ -130,7 +130,10 @@ td.mat-cell { padding: 5px 10px !important;}
 .landing-page-table-head h6{ background-color: #f3f6f9; padding: 10px; margin-bottom: 0px;}
 .w-75px { width: 75px;}
 .filter-table-data .form-control {padding: 5px;}
-
+.mat-table {
+  background: #fff;
+  width: 100%;
+}
 select.form-control{
   color: #474747 !important;
 }
