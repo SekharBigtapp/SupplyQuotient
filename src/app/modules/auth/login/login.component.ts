@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
 
      ngOnInit(): void {
       if (this.dataStorage.isUserLoggedIn) {
-        let data = localStorage.getItem("token");
+        let data = localStorage.getItem("Token_generated");
         if (data) {
           //this.loginData = JSON.parse(data);
           this.router.navigateByUrl("dashboard")

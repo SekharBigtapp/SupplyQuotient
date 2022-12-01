@@ -59,6 +59,8 @@ import { NotificationComponent } from './shared/notification/notification.compon
 import { DialogComponent } from './dialog/dialog.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RolesComponent } from './modules/admin/roles/roles.component';
+import { SubMenuComponent } from './modules/admin/sub-menu/sub-menu.component';
+import { MenuComponent } from './modules/admin/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -97,7 +99,9 @@ import { RolesComponent } from './modules/admin/roles/roles.component';
     // SchedulingConfigComponent,
     UsersComponent,
     RolesComponent,
+    SubMenuComponent,
     AddUserComponent,
+    MenuComponent,
     NotificationComponent,
     //DialogComponent
   ],

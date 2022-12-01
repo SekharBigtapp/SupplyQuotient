@@ -1,1 +1,181 @@
-<p>sub-menu works!</p>
+<!-- partial -->
+<div class="content-wrapper">
+    <div class=" ">
+      <div class=" pb-0">
+  
+        <!-- first row starts here -->
+        <div class="row">
+          <div class="header-right mt-md-2 mt-lg-0 w-100">
+            <div class=" align-items-center d-inline-block">
+              <a routerLink="/masters">
+                <p class="m-0 pe-3"> Admin </p>
+              </a>
+              <a class="ps-3 me-4">
+                <p class="m-0"> SubMenu </p>
+              </a>
+            </div>           
+          </div>
+        </div>
+  
+        <div class="row grid-margin stretch-card mt-3">
+
+            <div class="card">
+                <div class="card-body pb-0">
+    
+                  <div class="">
+                    <h3 class="d-inline-block"> SubMenu </h3>
+                    <span class="float-end mb-2">
+                      <button type="button" class="btn btn-success btn-rounded"
+                          *ngIf="!isAddSubMenuForm" (click)="onAddSubMenu()"> Add SubMenu </button>
+                     <button type="button" class="btn btn-warning btn-rounded mx-2"
+                          *ngIf="!isAddSubMenuForm" (click)="onBack()"> Back </button> 
+                          
+                 </span>
+                  <div style="height:10px">
+                      <div *ngIf="errorMessage" [ngStyle]="{'color': errorType == 'Error' ? 'red':'green'}"
+                          class="notificationMessage">{{Message}}</div>
+                  </div>
+                  </div>
+                  
+                  <div class="card" *ngIf="!isAddSubMenuForm">
+                    
+                      <div class="">
+                        <span class="d-block p-2 bg-primary text-white">Select Menu</span>
+                        <div class="col-md-12 p-2" >
+                          <div class="row">
+                            <div class="col-md-6">
+                              <div class="mb-3">
+                                <mat-form-field >
+                                  <mat-label>Select Menu</mat-label>
+                                  <mat-select formControlName="Menu" required>
+                                      <mat-option>Select Menu</mat-option>
+                                      <!-- <mat-option *ngFor="let menu of MenuList" [value]="menu.Id">{{menu.Menu_name}}
+                                      </mat-option> -->
+                                  </mat-select>
+                                  <mat-error *ngIf="addSubMenuform.controls['Menu'].hasError('required')">Menu is
+                                      required
+                                  </mat-error>
+                              </mat-form-field>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="mb-3 mt-1 pt-1">
+                                <span class=" mb-2">
+                                  <button type="button" class="btn btn-success btn-rounded"
+                                  *ngIf="!isAddSubMenuForm" > Submit </button>
+                                  </span>
+                              </div>
+                            </div>                    
+                          </div>                        
+                      </div>
+                        </div>                       
+                        </div>   
+                  
+                  <div class="clearfix"></div>
+                </div>
+
+
+            <div class="card-body pt-0 pb-0">
+              <div class="filter-table-data mt-3" *ngIf="isAddSubMenuForm">
+               
+                <form [formGroup]="addSubMenuform" (ngSubmit)="onAddSubMenuSubmit()" >
+                    <div class="row">
+                        <div class="col-md-4">
+                            <mat-form-field >
+                                <mat-label>Select Menu</mat-label>
+                                <mat-select formControlName="Menu" required>
+                                    <mat-option>Select Menu</mat-option>
+                                    <mat-option *ngFor="let menu of MenuList" [value]="menu.Id">{{menu.Menu_name}}
+                                    </mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="addSubMenuform.controls['Menu'].hasError('required')">Menu is
+                                    required
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-4">
+                              <mat-form-field>
+                                <input type="text" matInput class="form-control" id="SubMenuName" formControlName="SubMenuName" placeholder="SubMenuName">
+                                <mat-error *ngFor = "let validation of validation_messages.SubMenuName">
+                                  <span *ngIf ="addSubMenuform.get('SubMenuName').hasError(validation.type)">
+                                    {{validation.message}}
+                                  </span>
+                                  
+                              </mat-error>
+                              </mat-form-field>
+
+                        </div>
+
+                        <div class="col-md-4">
+                              <mat-form-field>
+                                <input type="text" matInput class="form-control" id="SubMenuUrl" formControlName="SubMenuUrl" placeholder="SubMenuUrl">
+                                <mat-error *ngFor = "let validation of validation_messages.SubMenuUrl">
+                                  <span *ngIf ="addSubMenuform.get('SubMenuUrl').hasError(validation.type)">
+                                    {{validation.message}}
+                                  </span>
+                                  
+                              </mat-error>
+                              </mat-form-field>
+                        </div>   
+                    </div>                    
+                    <div class="row">
+                        <div class="col-md-12 float-right" >
+                        <button type="submit" class=" btn btn-sm btn-success mt-2 mt-sm-0 btn-icon-text" style="margin-left: 15px;" >
+                            <i class="mdi mdi-checkbox-marked-circle-outline"></i> Save </button>
+                        <button type="submit" class=" btn btn-sm btn-secondary mt-2 mt-sm-0 btn-icon-text" (click)="cancelClick()" style="margin-left: 15px;" >
+                            <i class="mdi mdi-checkbox-marked-circle-outline" ></i> Cancel </button>
+                          
+                        </div>
+                    </div>
+                    
+                </form>
+
+                
+            </div>
+            </div>
+            
+            <div class="card-body pt-0" >     
+            <div class="filter-table-data mt-3">
+                <div class="table-responsive ">
+                    <table mat-table [dataSource]="this.filterdata.dataSource" class="mat-elevation-z8">                       
+                        <ng-container matColumnDef="sno">
+                          <th mat-header-cell *matHeaderCellDef> SNo. </th>
+                          <td mat-cell *matCellDef="let element"> {{element.sno}} </td>
+                        </ng-container>                      
+                       
+                        <ng-container matColumnDef="Submenu_name">
+                          <th mat-header-cell *matHeaderCellDef> SubMenu Name </th>
+                          <td mat-cell *matCellDef="let element"> {{element.Submenu_name}} </td>
+                        </ng-container>                      
+                       
+                        <ng-container matColumnDef="Submenu_url">
+                          <th mat-header-cell *matHeaderCellDef> SubMenu Url </th>
+                          <td mat-cell *matCellDef="let element"> {{element.Submenu_url}} </td>
+                        </ng-container>                        
+                       
+                        <ng-container matColumnDef="Actions">
+                          <th mat-header-cell *matHeaderCellDef> Actions </th>
+                          <td mat-cell *matCellDef="let element"> 
+                            <span matTooltip="Edit" style="cursor: pointer;" 
+                            (click)="onSubMenuEdit(element)"><i class="fa fa-edit" aria-hidden="true"></i></span> &nbsp; 
+                        <span matTooltip="Delete" style="cursor: pointer;" 
+                            (click)="onSubMenuDelete(element)"><i class="fa fa-trash" aria-hidden="true"></i></span>
+                            
+                          </td>
+                        </ng-container>
+                      
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                      </table>
+                      <mat-paginator [pageSizeOptions]="[10, 25, 50, 100]" aria-label="Select page">
+                      </mat-paginator>
+                </div>
+            </div>
+            </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+</div>
