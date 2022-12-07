@@ -14,7 +14,7 @@ const routes: Routes = [
     { path: 'addUser', component: AddUserComponent },
     { path: 'roles', component: RolesComponent },
     { path: 'rolePermission', component: RolePermissionsComponent },
-    { path: 'memu', component: MenuComponent },
+    { path: 'menu', component: MenuComponent },
     { path: 'submenu', component: SubMenuComponent },
 ];
 

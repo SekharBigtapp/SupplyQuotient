@@ -32,8 +32,8 @@
                   <div class="">
                     <h3 class="d-inline-block"> Users </h3>
                     <span class="float-end mb-2">
-                      <button type="button" class="btn btn-outline-secondary btn-rounded"
-                          *ngIf="!isAddUserForm" (click)="onAddUser()"> Add
+                      <button type="button" class="float-end btn btn-sm btn-primary mt-1 mt-sm-0 btn-icon-text"
+                          *ngIf="!isAddUserForm" (click)="onAddUser()"> <i class="mdi mdi-plus-circle"></i>                          Add
                           User </button>
                   </span>
                   <div style="height:10px">
@@ -44,9 +44,12 @@
                   <div class="clearfix"></div>
                 </div>
 
-
-            <div class="card-body pt-0 pb-0">
-              <div class="filter-table-data mt-3" *ngIf="isAddUserForm">
+            
+            <div class="card-body pt-0 pb-0"  *ngIf="isAddUserForm">
+              <div class="card-header" style="background-color:#bbb3cf ;">
+                <h5> Add User</h5>
+              </div>
+              <div class="filter-table-data p-3"  style="background-color:#ebf6fc;">
                 <form [formGroup]="addUserform" (ngSubmit)="onAddUserSubmit()" >
                     <div class="row">
                         <div class="col-md-4">
