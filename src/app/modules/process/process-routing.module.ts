@@ -9,7 +9,7 @@ const routes: Routes = [
     { path: 'process', component: ProcessComponent },
     { path: 'store2storetransfer', component: StoreStoreTransferComponent },
     { path: 'supplierSKUCombination', component:SupplierProductCombinationComponent},
-    { path: 'newlauchitem', component: NewItemLaunchDateComponent },
+    { path: 'newLauchItem', component: NewItemLaunchDateComponent },
   
 ];
 

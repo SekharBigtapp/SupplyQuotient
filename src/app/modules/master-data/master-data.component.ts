@@ -17,19 +17,19 @@ export class MasterDataComponent implements OnInit {
   }
   productMasterClick() {
     alert('hi');
-    this.router.navigate(['masters/productmaster']);
+    this.router.navigate(['masters/productMaster']);
   }
   storeMasterClick() {
-    this.router.navigate(['masters/storemaster']);
+    this.router.navigate(['masters/storeMaster']);
   }
 
   distributionMasterClick() {
-    this.router.navigate(['masters/distributionmaster']);
+    this.router.navigate(['masters/distributionMaster']);
   }
   supplierMasterClick() {
-    this.router.navigate(['masters/suppliermaster']);
+    this.router.navigate(['masters/supplierMaster']);
   }
   storeSupplierMasterClick() {
-    this.router.navigate(['masters/storesupplymaster']);
+    this.router.navigate(['masters/storeSupplyMaster']);
   }
 }

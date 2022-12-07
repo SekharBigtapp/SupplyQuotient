@@ -42,25 +42,28 @@
                     <div class="row">
                       <div class="col-md-3">
                         <div class="form-group">
-                          <label for="exampleFormControlSelect1">Country </label>
-                          <input type="text" class="form-control form-control-sm" placeholder="Country"
-                            aria-label="country" formControlName="country"  (change)="onChangeCountry($event)" />
+                          <mat-form-field>
+                          <mat-label>Country</mat-label>
+                          <input type="text" matInput placeholder="Country" aria-label="country" formControlName="country"  (change)="onChangeCountry($event)">
+                          </mat-form-field>
                         </div>
                       </div>
 
                       <div class="col-md-3">
                         <div class="form-group">
                           <div *ngIf="supplieridFlag || suppliernameFlag">
-                            <label for="exampleFormControlSelect1">State </label>
-                            <input type="text" class="form-control form-control-sm" placeholder="State" aria-label="state"
-                              formControlName="state" />
+                            <mat-form-field>
+                            <mat-label>State</mat-label>
+                            <input type="text" matInput  placeholder="State" aria-label="state" formControlName="state">
+                            </mat-form-field>
                           </div>
                           <div *ngIf="countryFlag">
-                            <label for="exampleFormControlSelect3">State</label>
-                            <select class="form-control form-control-sm" id="exampleFormControlSelect1"
-                              formControlName="state">
-                              <option *ngFor="let supplier of SupplierMasterDropDownList" [value]="supplier.supp_region">{{supplier.supp_region}}</option>
-                            </select>
+                            <mat-form-field>
+                            <mat-label>State</mat-label>
+                            <mat-select  id="exampleFormControlSelect1" formControlName="state">
+                              <mat-option *ngFor="let supplier of SupplierMasterDropDownList" [value]="supplier.supp_region">{{supplier.supp_region}}</mat-option>
+                            </mat-select>
+                            </mat-form-field>
                           </div>
                           
                         </div>
@@ -69,16 +72,19 @@
                       <div class="col-md-3">
                         <div class="form-group">
                           <div *ngIf="supplieridFlag || suppliernameFlag">
-                            <label for="exampleFormControlSelect1">City </label>
-                            <input type="text" class="form-control form-control-sm" placeholder="City" aria-label="city"
-                              formControlName="city" (change)="onChangeSupplierCity($event)"/>
+                            <mat-form-field>
+                            <mat-label>City</mat-label>
+                            <input type="text" matInput  placeholder="City" aria-label="city"
+                              formControlName="city" (change)="onChangeSupplierCity($event)">
+                            </mat-form-field>
                           </div>
                           <div *ngIf="countryFlag">
-                            <label for="exampleFormControlSelect3">City</label>
-                            <select class="form-control form-control-sm" id="exampleFormControlSelect1"
-                              formControlName="city">
-                              <option *ngFor="let supplier of SupplierMasterDropDownList" [value]="supplier.supp_city">{{supplier.supp_city}}</option>
-                            </select>
+                            <mat-form-field>
+                            <mat-label>City</mat-label>
+                            <mat-select  id="exampleFormControlSelect1" formControlName="city">
+                              <mat-option *ngFor="let supplier of SupplierMasterDropDownList" [value]="supplier.supp_city">{{supplier.supp_city}}</mat-option>
+                            </mat-select>
+                            </mat-form-field>
                           </div>
                          
                         </div>
@@ -94,17 +100,19 @@
 
                       <div class="col-md-3">
                         <div class="form-group">
-                          <label for="exampleFormControlSelect3">Supplier ID</label>
-                          <input type="text" class="form-control form-control-sm" placeholder="Supplier ID"
-                            aria-label="supplierID" formControlName="supplierID" (change)="onChangeSupplierId($event)" />
+                          <mat-form-field>
+                          <mat-label>Supplier ID</mat-label>
+                          <input type="text" matInput  placeholder="Supplier ID" aria-label="supplierID" formControlName="supplierID" (change)="onChangeSupplierId($event)">
+                          </mat-form-field>
                         </div>
                       </div>
 
                       <div class="col-md-3">
                         <div class="form-group">
-                          <label for="exampleFormControlSelect3">Supplier Name</label>
-                          <input type="text" class="form-control form-control-sm" placeholder="Supplier Name"
-                            aria-label="supplierName" formControlName="supplierName" (change)="onChangeSupplierName($event)" />
+                          <mat-form-field>
+                          <mat-label>Supplier Name</mat-label>
+                          <input type="text" matInput  placeholder="Supplier Name" aria-label="supplierName" formControlName="supplierName" (change)="onChangeSupplierName($event)">
+                          </mat-form-field>
                         </div>
                       </div>
 

@@ -13,16 +13,16 @@ import { VendorManagedInventoryComponent } from './vendor-managed-inventory/vend
 
 const routes: Routes = [
  // { path: '', component: TransactionComponent },
- { path: 'pricemarkdown', component: PriceMarkdownComponent },
- { path: 'phaseoutitem', component: PhaseOutItemsComponent },
- { path: 'promotiondetails', component: PromotionDetailsComponent },
- { path: 'stockregister', component: StockRegisterComponent },
- { path: 'possale', component: PosSaleComponent },
- { path: 'physicalstock', component: PhysicalStockCheckComponent },
+ { path: 'priceMarkdown', component: PriceMarkdownComponent },
+ { path: 'phaseOutItem', component: PhaseOutItemsComponent },
+ { path: 'promotionDetails', component: PromotionDetailsComponent },
+ { path: 'stockRegister', component: StockRegisterComponent },
+ { path: 'posSale', component: PosSaleComponent },
+ { path: 'physicalStock', component: PhysicalStockCheckComponent },
   //{ path: 'transaction', component: TransactionComponent },
   //{ path: 'vendormanagedinventory', component: VendorManagedInventoryComponent },
   { path: 'store2storetransfer', component: StoreStoreTransferComponent },  
-  { path: 'newlauchitem', component: NewItemLaunchDateComponent },
+  { path: 'newLauchItem', component: NewItemLaunchDateComponent },
 ];
 
 @NgModule({

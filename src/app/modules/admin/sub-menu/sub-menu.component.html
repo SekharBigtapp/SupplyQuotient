@@ -49,8 +49,8 @@
                                   <mat-label>Select Menu</mat-label>
                                   <mat-select formControlName="Menu" required>
                                       <mat-option>Select Menu</mat-option>
-                                      <!-- <mat-option *ngFor="let menu of MenuList" [value]="menu.Id">{{menu.Menu_name}}
-                                      </mat-option> -->
+                                      <mat-option *ngFor="let menu of MenuList" [value]="menu.Id">{{menu.Menu_name}}
+                                      </mat-option>
                                   </mat-select>
                                   <mat-error *ngIf="addSubMenuform.controls['Menu'].hasError('required')">Menu is
                                       required

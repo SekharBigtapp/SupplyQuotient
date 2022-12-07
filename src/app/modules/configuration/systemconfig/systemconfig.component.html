@@ -196,65 +196,50 @@
 
                       <div class="col-md-3">
                         <div class="form-group">
-                          <label for="exampleFormControlSelect3">Store Names</label>
-                          <select class="form-control form-control-sm" formControlName="StoreName">
-                            <option *ngFor="let store of storenamelist" [value]="store.store_name">{{store.store_name}}
-                            </option>
-                          </select>
+                          <mat-form-field>
+                          <mat-label>Store Names</mat-label>
+                          <mat-select formControlName="StoreName">
+                            <mat-option *ngFor="let store of storenamelist" [value]="store.store_name">{{store.store_name}}
+                            </mat-option>
+                          </mat-select>
+                          </mat-form-field>
                         </div>
                       </div>
 
                       <div class="col-md-3">
                         <div class="form-group">
-                          <label for="exampleFormControlSelect2">Product Categories</label>
-                          <!-- <select class="form-control form-control-sm" id="exampleFormControlSelect1"
-                          formControlName="ProductCateg" placeholder="Product_Categories">
-                          <option value="Sports & Outdoor">Sports & Outdoor</option>
-                          <option value="Home Entertainment">Home Entertainment</option>
-                        </select> -->
-
-                          <select class="form-control form-control-sm" formControlName="ProductCateg"
-                            (change)="getSubCategoryList()">
-                            <option *ngFor="let cat of categoryList" [value]="cat.prod_cat">{{cat.prod_cat}}</option>
-                          </select>
+                          <mat-form-field>
+                          <mat-label>Product Categories</mat-label>
+                          <mat-select  formControlName="ProductCateg" (change)="getSubCategoryList()">
+                            <mat-option *ngFor="let cat of categoryList" [value]="cat.prod_cat">{{cat.prod_cat}}</mat-option>
+                          </mat-select>
+                          </mat-form-field>
                         </div>
                       </div>
 
                       <div class="col-md-3">
                         <div class="form-group">
-                          <label for="exampleFormControlSelect2">Sub Categories</label>
-                          <!-- <select class="form-control form-control-sm" id="exampleFormControlSelect1"
-                          formControlName="SubCategories" placeholder="Sub_Categories">
-                          <option value="Beach & Pool">Beach & Pool</option>
-                          <option value="Yoga Mats & Blocks">Yoga Mats & Blocks</option>
-                          <option value="Projectors">Projectors</option>
-                          <option value="TV">TV</option>
-                        </select> -->
-                          <select class="form-control form-control-sm" formControlName="SubCatege">
-                            <option *ngFor="let subProd of subCategoryValues" [value]="subProd.prod_subcat">
-                              {{subProd.prod_subcat}}</option>
-                          </select>
+                          <mat-form-field>
+                          <mat-label>Sub Categories</mat-label>
+                          <mat-select formControlName="SubCatege">
+                            <mat-option *ngFor="let subProd of subCategoryValues" [value]="subProd.prod_subcat">
+                              {{subProd.prod_subcat}}</mat-option>
+                          </mat-select>
+                          </mat-form-field>
                         </div>
                       </div>
-
-
 
                       <div class="col-md-3">
                         <div class="form-group">
-                          <label for="exampleFormControlSelect3">Product Name</label>
-                          <select class="form-control form-control-sm" formControlName="ProductName">
-                            <option *ngFor="let product of productNameList" [value]="product.prod_name">
-                              {{product.prod_name}}</option>
-                          </select>
+                          <mat-form-field>
+                          <mat-label>Product Name</mat-label>
+                          <mat-select formControlName="ProductName">
+                            <mat-option *ngFor="let product of productNameList" [value]="product.prod_name">
+                              {{product.prod_name}}</mat-option>
+                          </mat-select>
+                          </mat-form-field>
                         </div>
                       </div>
-
-
-
-
-
-
-
                     </div>
                   
 
@@ -425,39 +410,46 @@
                   <div class="row">
                     <div class="col-md-3">
                       <div class="form-group">
-                        <label for="exampleFormControlSelect3">Store Names</label>
-                        <select class="form-control form-control-sm" formControlName="storename">
-                          <option *ngFor="let stores of storenamelist" [value]="stores.store_name">{{stores.store_name}}
-                          </option>
-                        </select>
+                        <mat-form-field>
+                        <mat-label>Store Names</mat-label>
+                        <mat-select  formControlName="storename">
+                          <mat-option *ngFor="let stores of storenamelist" [value]="stores.store_name">{{stores.store_name}}
+                          </mat-option>
+                        </mat-select>
+                        </mat-form-field>
                       </div>
                     </div>
                     <div class="col-md-3">
                       <div class="form-group">
-                        <label for="exampleFormControlSelect2">Product Categories</label>
-                        <select class="form-control form-control-sm" formControlName="productCateg"
-                          (change)="getSubCategorysList()">
-                          <option *ngFor="let category of categorysList" [value]="category.prod_cat">
-                            {{category.prod_cat}}</option>
-                        </select>
+                        <mat-form-field>
+                        <mat-label>Product Categories</mat-label>
+                        <mat-select  formControlName="productCateg" (change)="getSubCategorysList()">
+                          <mat-option *ngFor="let category of categorysList" [value]="category.prod_cat">
+                            {{category.prod_cat}}</mat-option>
+                        </mat-select>
+                        </mat-form-field>
                       </div>
                     </div>
                     <div class="col-md-3">
                       <div class="form-group">
-                        <label for="exampleFormControlSelect2">Sub Categories</label>
-                        <select class="form-control form-control-sm" formControlName="subcateg">
-                          <option *ngFor="let subProduct of subCategorysValues" [value]="subProduct.prod_subcat">
-                            {{subProduct.prod_subcat}}</option>
-                        </select>
+                        <mat-form-field>
+                        <mat-label>Sub Categories</mat-label>
+                        <mat-select formControlName="subcateg">
+                          <mat-option *ngFor="let subProduct of subCategorysValues" [value]="subProduct.prod_subcat">
+                            {{subProduct.prod_subcat}}</mat-option>
+                        </mat-select>
+                        </mat-form-field>
                       </div>
                     </div>
                     <div class="col-md-3">
                       <div class="form-group">
-                        <label for="exampleFormControlSelect3">Product Name</label>
-                        <select class="form-control form-control-sm" formControlName="productname">
-                          <option *ngFor="let products of productsNameList" [value]="products.prod_name">
-                            {{products.prod_name}}</option>
-                        </select>
+                        <mat-form-field>
+                        <mat-label>Product Name</mat-label>
+                        <mat-select  formControlName="productname">
+                          <mat-option *ngFor="let products of productsNameList" [value]="products.prod_name">
+                            {{products.prod_name}}</mat-option>
+                        </mat-select>
+                        </mat-form-field>
                       </div>
                     </div>
                   </div>

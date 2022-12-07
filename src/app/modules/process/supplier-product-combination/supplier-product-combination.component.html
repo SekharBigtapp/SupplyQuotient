@@ -15,18 +15,16 @@
               <p class="m-0"> Suppliers At Risk </p>
             </a>
           </div>
-          <!-- <div class="float-right" style="flex-direction: row-reverse;">
-                <button type="button" class=" btn btn-primary mt-2 mt-sm-0 btn-icon-text">
-                  <i class="mdi mdi-plus-circle"></i> Add Prodcut </button>
-              </div> -->
+         
         </div>
       </div>
 
       <div class="col-lg-12 grid-margin stretch-card mt-3">
         <div class="card">
           <div class="card-body">
-
-
+            <div class="mb-3">
+            <h3 class="d-inline-block"> Suppliers At Risk </h3>
+            </div>
             <div class="clearfix"></div>
             <div class="product-filters">
 
@@ -48,34 +46,21 @@
 
                       <div class="col-md-3">
                         <div class="form-group">
-                          <!-- <label for="exampleFormControlSelect1">Store Name</label>
-                          <select class="form-control form-control-sm" id="exampleFormControlSelect1"
-                            formControlName="StoreName">
-                            <option *ngFor="let store of storeNameList" [value]="store.store_name">{{store.store_name}}
-                            </option>
-                          </select> -->
-                          <mat-form-field>
+                           <mat-form-field class="pt-2">
                             <mat-label>Store Name</mat-label>
                             <input type="text" matInput [formControl]="storename" [(ngModel)]="storenamefield" [matAutocomplete]="auto1">
                             <mat-autocomplete #auto1="matAutocomplete">
                               <mat-option *ngFor="let store of storeNameList | async" [value]="store.store_name">
                                 {{store.store_name}}
                               </mat-option>
-                            </mat-autocomplete>
-                            
+                            </mat-autocomplete>                           
                           </mat-form-field>
                         </div>
                       </div>
 
                       <div class="col-md-3">
                         <div class="form-group">
-                          <!-- <label for="exampleFormControlSelect2">Product Categories</label>
-                          <select class="form-control form-control-sm" formControlName="CategoryName"
-                            (change)="getSubCategorysList()">
-                            <option *ngFor="let category of categoryNameList" [value]="category.prod_cat">
-                              {{category.prod_cat}}</option>
-                          </select> -->
-                          <mat-form-field class="example-full-width" appearance="fill">
+                           <mat-form-field class="pt-2">
                             <mat-label>Product Categories</mat-label>
                             <input type="text" matInput [formControl]="categoryname" [(ngModel)]="categorynamefield"  [matAutocomplete]="auto3">
                             <mat-autocomplete #auto3="matAutocomplete" (optionSelected)="getSubCategorysList()">
@@ -89,29 +74,28 @@
 
                       <div class="col-md-3">
                         <div class="form-group">
-                          <label for="exampleFormControlSelect2">Sub Categories</label>
+                          <!-- <label for="exampleFormControlSelect2">Sub Categories</label>
                           <select class="form-control form-control-sm" formControlName="SubcategoryName">
                             <option *ngFor="let subProduct of subCategoryNameList" [value]="subProduct.prod_subcat">
                               {{subProduct.prod_subcat}}</option>
-                          </select>
+                          </select> -->
+                          <mat-form-field class="pt-2">
+                            <mat-label>Sub Categories</mat-label>
+                            <input type="text" matInput [formControl]="SubCategories"  [matAutocomplete]="auto4">
+                            <mat-autocomplete #auto4="matAutocomplete">
+                              <mat-option *ngFor="let subProduct of subCategoryNameList | async" [value]="subProduct.prod_subcat">
+                                {{subProduct.prod_subcat}}
+                              </mat-option>
+                            </mat-autocomplete>
+                          </mat-form-field> 
                         </div>
                       </div>
-
-
-
-
                       <div class="col-md-3">
                         <div class="form-group">
-                          <!-- <label for="exampleFormControlSelect3">Product Name</label>
-                          <select class="form-control form-control-sm" formControlName="ProductName">
-                            <option *ngFor="let product of productNameList" [value]="product.prod_name">
-                              {{product.prod_name}}</option>
-                          </select> -->
-                          <mat-form-field>
+                            <mat-form-field class="pt-2">
                             <mat-label>Product Name</mat-label>
                             <input type="text" matInput [formControl]="productname" [(ngModel)]="productnamefield" [matAutocomplete]="auto2">
-                           
-                            <mat-autocomplete #auto2="matAutocomplete">
+                             <mat-autocomplete #auto2="matAutocomplete">
                               <mat-option *ngFor="let products of productNameList | async" [value]="products.prod_name">
                                 {{products.prod_name}}
                               </mat-option>
@@ -120,15 +104,14 @@
                         </div>
                       </div>
 
-
                       <div class="col-md-3">
                         <div class="form-group">
-                          <label for="exampleFormControlSelect3"> SKU Code</label>
-                          <input type="text" class="form-control form-control-sm" placeholder="SKU Code"
-                            aria-label="Username" placeholder="SKU_CODE" formControlName='SKU_CODE' />
+                          <mat-form-field class="pt-2">
+                          <mat-label>SKU Code</mat-label>
+                          <input type="text" matInput placeholder="SKU Code" aria-label="Username" placeholder="SKU_CODE" formControlName='SKU_CODE'>
+                          </mat-form-field>
                         </div>
                       </div>
-
 
                       <div class="col-md-3">
                         <br>

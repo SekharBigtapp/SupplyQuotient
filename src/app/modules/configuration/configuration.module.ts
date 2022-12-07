@@ -17,6 +17,9 @@ import { StoreToStoreTransferConfigService } from './store-store-transfer-config
 import { forecastService } from './forecasted-config/forecast-service';
 import { DCStoreMappingComponent } from './dc-store-mapping/dc-store-mapping.component';
 import { MatAutocomplete, MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatFormField, MatFormFieldModule, MatLabel } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -38,6 +41,10 @@ import { MatAutocomplete, MatAutocompleteModule } from '@angular/material/autoco
     ReactiveFormsModule,
     MatSlideToggleModule,    
     MatAutocompleteModule,
+    MatInputModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    
   ],
   providers: [DatePipe,StoreToStoreTransferConfigService,forecastService],
 

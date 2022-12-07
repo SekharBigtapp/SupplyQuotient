@@ -12,11 +12,11 @@ import { AddNewSupplierComponent } from './supplier-master/add-new-supplier/add-
 import { SupplierMasterComponent } from './supplier-master/supplier-master.component';
 const routes: Routes = [
   { path: '', component: MasterDataComponent },
-  { path: 'productmaster', component: ProductMasterComponent },
-  { path: 'storemaster', component: StoreMasterComponent },
-  { path: 'distributionmaster', component: DistributionCenterComponent },
-  { path: 'suppliermaster', component: SupplierMasterComponent },
-  { path: 'storesupplymaster', component: StoreSupplierMasterComponent },
+  { path: 'productMaster', component: ProductMasterComponent },
+  { path: 'storeMaster', component: StoreMasterComponent },
+  { path: 'distributionMaster', component: DistributionCenterComponent },
+  { path: 'supplierMaster', component: SupplierMasterComponent },
+  { path: 'storeSupplyMaster', component: StoreSupplierMasterComponent },
   { path: 'addNewProduct', component:AddProductMasterComponent},
   { path: 'addNewStore', component:AddNewStoreComponent},
   { path: 'addNewSupplier', component:AddNewSupplierComponent},

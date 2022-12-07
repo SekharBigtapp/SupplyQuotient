@@ -47,10 +47,6 @@
                   
                       <div class="col-md-3">
                         <div class="form-group">
-                          <!-- <label for="exampleFormControlSelect3">Product Name</label>
-                            <select class="form-control form-control-sm" formControlName="ProductName">
-                            <option *ngFor="let product of productNameList" [value]="product.prod_name">{{product.prod_name}}</option>
-                            </select> -->
                             <mat-form-field>
                               <mat-label>Product Name</mat-label>
                               <input type="text" matInput [formControl]="ProductName" [(ngModel)]="productnameField" [matAutocomplete]="auto">
@@ -65,12 +61,6 @@
 
                       <div class="col-md-3">
                       <div class="form-group">
-                        <!-- <label for="exampleFormControlSelect2">Product Categories</label>
-                        <select class="form-control form-control-sm" formControlName="CategoryName"
-                        (change)="getSubCategorysList()">
-                        <option *ngFor="let category of categoryNameList" [value]="category.prod_cat">
-                          {{category.prod_cat}}</option>
-                      </select> -->
                       <mat-form-field>
                         <mat-label>Product Categories</mat-label>
                         <input type="text" matInput [formControl]="CategoryName" [(ngModel)]="categoryNameField" [matAutocomplete]="auto1">
@@ -85,13 +75,7 @@
 
                       <div class="col-md-3">
                         <div class="form-group">
-                          <!-- <label for="exampleFormControlSelect2">Sub Categories</label>
-                          <select class="form-control form-control-sm" formControlName="SubcategoryName">
-                            <option *ngFor="let subProduct of subCategoryNameList" [value]="subProduct.prod_subcat">
-                              {{subProduct.prod_subcat}}</option>
-                          </select> -->
-
-                          <mat-form-field>
+                         <mat-form-field>
                             <mat-label>Sub Categories</mat-label>
                             <input type="text" matInput [formControl]="SubcategoryName" [(ngModel)]="subcategoryNameField" [matAutocomplete]="auto2">
                             <mat-autocomplete #auto2="matAutocomplete"  #mySelect (optionSelected)="onChangeSubCategoryName($event)">
@@ -105,8 +89,10 @@
 
                       <div class="col-md-3">
                         <div class="form-group">
-                          <label for="exampleFormControlSelect3"> SKU Code</label>
-                          <input type="text" class="form-control form-control-sm" placeholder= "SKU Code"  aria-label="Username" formControlName="skuCode" (change)="onChangeSkuId($event)"/>
+                          <mat-form-field>
+                            <mat-label>SKU Code</mat-label>                            
+                          <input type="text" matInput placeholder= "SKU Code"  aria-label="Username" formControlName="skuCode" (change)="onChangeSkuId($event)">
+                          </mat-form-field>
                         </div>
                       </div>
 

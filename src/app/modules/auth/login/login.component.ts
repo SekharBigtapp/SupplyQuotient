@@ -5,6 +5,7 @@ import { DataStorageService } from 'src/app/core/services/data-storage.service';
 import { LoginService } from './services/login.service';
 import { BaseHttp } from 'src/app/core/services/baseHttp.service';
 import MyAppHttp from 'src/app/core/services/myAppHttp.service';
+import { UserIdleService } from 'angular-user-idle';
 
 @Component({
   selector: 'app-login',
@@ -35,6 +36,7 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router,
     private formBuilder: FormBuilder,
     private loginService: LoginService,
+    private useridle : UserIdleService,
     public dataStorage: DataStorageService) 
     {
       
@@ -47,10 +49,7 @@ export class LoginComponent implements OnInit {
         if (data) {
           //this.loginData = JSON.parse(data);
           this.router.navigateByUrl("dashboard")
-        }
-
-
-        
+        }        
       }
       this.LoginForm = this.formBuilder.group({
         userEmail: [
@@ -70,10 +69,10 @@ export class LoginComponent implements OnInit {
   
     }
 
+    stopWatching() {
+      this.useridle.stopWatching();
+    }
     clkSignin() {
-      //alert();
-      
-      //this.errorFlag = false;
       if (this.LoginForm.valid) {
        // alert("login")
         localStorage.setItem("Email", this.LoginForm.value.userEmail);
@@ -86,6 +85,7 @@ export class LoginComponent implements OnInit {
           }
         ).subscribe((response:any) => {
           console.log(response)
+          //this.onSuccessfullLogin(response);
           this.router.navigateByUrl("dashboard")
           this.authorizationMessage = MyAppHttp.ToasterMessage.activeOrNot;
           this.dataStorage.isUserLoggedIn = true
@@ -107,7 +107,42 @@ export class LoginComponent implements OnInit {
         //this.sendReceiveService.showToast(MyAppHttp.ToastType.ERROR, 'Error', response.message);
       }
     }
+    // onSuccessfullLogin(response: any) {
+    //   localStorage.clear();
+    //   this.dataStorage.isUserLoggedIn = true;
+    //   localStorage.setItem("Token_generated", response.Token_generated);
+    //   localStorage.setItem("Email", response.userEmail)
+    //   localStorage.setItem("role", response.role)
+    //   localStorage.setItem("username", response.username)
+    //   let data = localStorage.getItem("Token_generated");
+    //   if (data) {
+    //     //this.loginData = JSON.parse(data);
+    //     this.router.navigateByUrl("dashboard")
+    //   }
+    //   if (this.loginData) {
+    //     //this.getAllPermittedModules();
+    //   }
+    //   this.useridle.startWatching();
+    //   this.useridle.onTimerStart().subscribe((count) => {
+    //     if (count > 1) {
+    //       this.loginService.UserLogout(this.loginData.userId).subscribe((resp: any) => {
+    //         localStorage.clear();
+    //         this.dataStorage.isUserLoggedIn = false;
+    //         this.router.navigateByUrl('/');
+           
+    //       });
+    //       console.log(count)
+    //       this.stopWatching();
+    //     }
+  
+    //   });
+    //   this.useridle.onTimeout().subscribe(() => console.log('Time is up!'));
+    // }
+
+    
   }
+
+  
 function dashboard(dashboard: any) {
   throw new Error('Function not implemented.');
 }
