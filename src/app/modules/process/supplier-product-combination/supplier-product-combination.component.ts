@@ -18,6 +18,10 @@ export interface category {
   prod_cat: string;  
 }
 
+export interface SubCatName {
+  prod_subcat: string;  
+}
+
 
 @Component({
   selector: 'app-supplier-product-combination',
@@ -51,6 +55,10 @@ export class SupplierProductCombinationComponent implements OnInit {
 
   categoryname = new FormControl<string | category>('');
   categoryOption: category[] = [];
+
+  SubCategories = new FormControl<string | SubCatName>('');
+  //subCategoryNameList: any;
+  Subcategory: SubCatName[] = [];
   
   categoryList: any;
   productnamefield: any;
@@ -60,6 +68,8 @@ export class SupplierProductCombinationComponent implements OnInit {
   productvalue:any;
   storevalue:any;
   categoryvalue:any;
+  autoSubCategoryValue:any;
+  autoCategoryValue:any;
 
   
 
@@ -88,6 +98,13 @@ export class SupplierProductCombinationComponent implements OnInit {
         return prod_cat ? this._filtercategory(prod_cat as string) : this.categoryOption.slice();
       }),
     );
+    this.subCategoryNameList = this.SubCategories.valueChanges.pipe(
+      startWith(''),
+      map(value => {
+        const prod_subcat = typeof value === 'string' ? value : value?.prod_subcat;
+        return prod_subcat ? this._filterSubCategory(prod_subcat as string) : this.Subcategory.slice();
+      }),
+    );
     this.supplierForm= this.formBuilder.group ({
       date: [""],
       SupplierName : [''],
@@ -110,6 +127,12 @@ export class SupplierProductCombinationComponent implements OnInit {
 
   }
 
+  private _filterSubCategory(prod_subcat: string): SubCatName[] {
+    const filterValueSub = prod_subcat;
+    this.autoSubCategoryValue=filterValueSub;
+    return this.Subcategory.filter(subProduct => subProduct.prod_subcat.includes(filterValueSub));
+  }
+
   getCategoryList() {
     this.supplierService.getCategoryNames().subscribe((response) => {
       console.log(response);
@@ -127,7 +150,7 @@ export class SupplierProductCombinationComponent implements OnInit {
     }
     this.supplierService.getSubCategoryNames(sub).subscribe((response) => {
       console.log(response);
-      this.subCategoryNameList = response
+      this.Subcategory = response
     })
   }
   onClear(){

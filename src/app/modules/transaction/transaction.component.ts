@@ -24,7 +24,7 @@ export class TransactionComponent implements OnInit {
   }
   newLaunchItem(){
     //alert('hi');
-    this.router.navigate(['transaction/newlauchitem']);
+    this.router.navigate(['transaction/newLauchItem']);
   }
   storeStoreTransfer(){
     //alert('hi');
@@ -37,15 +37,15 @@ export class TransactionComponent implements OnInit {
     this.router.navigate(['transaction/vendormanagedinventory'])
   }
   stockRegister(){
-    this.router.navigate(['transaction/stockregister'])
+    this.router.navigate(['transaction/stockRegister'])
   }
   posSale(){
-    this.router.navigate(['transaction/possale'])
+    this.router.navigate(['transaction/posSale'])
   }
   promotionDetails(){
-    this.router.navigate(['transaction/promotiondetails'])
+    this.router.navigate(['transaction/promotionDetails'])
   }
   PhysicalStock(){
-    this.router.navigate(['transaction/physicalstock'])
+    this.router.navigate(['transaction/physicalStock'])
   }
 }

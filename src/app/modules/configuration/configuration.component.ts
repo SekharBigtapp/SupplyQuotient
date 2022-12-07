@@ -26,10 +26,10 @@ export class ConfigurationComponent implements OnInit {
     this.router.navigate(['configurations/scheduling']);
   }
   ForecasteConfig(){
-    this.router.navigate(['configurations/forecastconfig'])
+    this.router.navigate(['configurations/forecastConfig'])
   }
   monotonicConfig(){
-    this.router.navigate(['configurations/monotonicconfig'])
+    this.router.navigate(['configurations/monotonicConfig'])
   }
 
 }

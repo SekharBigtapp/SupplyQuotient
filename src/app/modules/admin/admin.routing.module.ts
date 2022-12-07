@@ -15,7 +15,7 @@ const routes: Routes = [
     { path: 'roles', component: RolesComponent },
     { path: 'rolePermission', component: RolePermissionsComponent },
     { path: 'menu', component: MenuComponent },
-    { path: 'submenu', component: SubMenuComponent },
+    { path: 'subMenu', component: SubMenuComponent },
 ];
 
 @NgModule({

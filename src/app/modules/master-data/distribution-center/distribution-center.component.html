@@ -42,25 +42,28 @@
 
                       <div class="col-md-3">
                         <div class="form-group">
-                          <label for="exampleFormControlSelect1">Country </label>
-                          <input type="text" class="form-control form-control-sm" placeholder="Product Name"
-                            aria-label="Username" formControlName="country" (change)="onChangeCountry($event)"  />
+                          <mat-form-field>
+                          <mat-label>Country </mat-label>
+                          <input type="text" matInput placeholder="Product Name" aria-label="Username" formControlName="country" (change)="onChangeCountry($event)">
+                          </mat-form-field>
                         </div>
                       </div>
 
                       <div class="col-md-3">
                         <div class="form-group">
                           <div *ngIf="disidFlag || disnameFlag">
-                            <label for="exampleFormControlSelect1">State </label>
-                            <input type="text" class="form-control form-control-sm" placeholder="Product Name"
-                              aria-label="Username" formControlName="state" />
+                            <mat-form-field>
+                              <mat-label>State </mat-label>                             
+                            <input type="text" matInput placeholder="Product Name" aria-label="Username" formControlName="state">
+                            </mat-form-field>
                           </div>
                           <div *ngIf="discountryFlag">
-                            <label for="exampleFormControlSelect3">State</label>
-                            <select class="form-control form-control-sm" id="exampleFormControlSelect1"
-                              formControlName="state">
-                              <option *ngFor="let distribution of DistributionMasterDropDownList" [value]="distribution.dc_region">{{distribution.dc_region}}</option>
-                            </select>
+                            <mat-form-field>
+                              <mat-label>State </mat-label> 
+                             <mat-select  id="exampleFormControlSelect1" formControlName="state">
+                              <mat-option *ngFor="let distribution of DistributionMasterDropDownList" [value]="distribution.dc_region">{{distribution.dc_region}}</mat-option>
+                             </mat-select>
+                             </mat-form-field>
                           </div>
                           
                         </div>
@@ -69,34 +72,39 @@
                       <div class="col-md-3">
                         <div class="form-group">
                           <div *ngIf="disidFlag || disnameFlag">
-                            <label for="exampleFormControlSelect1">City </label>
-                            <input type="text" class="form-control form-control-sm" placeholder="Product Name"
-                            aria-label="Username" formControlName="city" />
+                            <mat-form-field>
+                            <mat-label>City </mat-label> 
+                            <input type="text" matInput placeholder="Product Name" aria-label="Username" formControlName="city">
+                            </mat-form-field>
                           </div>
                           <div *ngIf="discountryFlag">
-                            <label for="exampleFormControlSelect3">City</label>
-                            <select class="form-control form-control-sm" id="exampleFormControlSelect1"
-                              formControlName="city">
-                              <option *ngFor="let distribution of DistributionMasterDropDownList" [value]="distribution.dc_city">{{distribution.dc_city}}</option>
-                            </select>
-                          </div>
-                          
+                            <mat-form-field>
+                            <mat-label>City </mat-label>                           
+                            <mat-select  id="exampleFormControlSelect1" formControlName="city">
+                              <mat-option *ngFor="let distribution of DistributionMasterDropDownList" [value]="distribution.dc_city">{{distribution.dc_city}}</mat-option>
+                            </mat-select>
+                            </mat-form-field>
+                          </div>                          
                         </div>
                       </div>
 
                       <div class="col-md-3">
                         <div class="form-group">
-                          <label for="exampleFormControlSelect3">Distribution Center ID</label>
-                          <input type="text" class="form-control form-control-sm" placeholder="Product SKU"
-                            aria-label="Username" formControlName="distributionCenterID" (change)="onChangeDistributionId($event)"/>
+                          <mat-form-field>
+                          <mat-label>Distribution Center ID </mat-label>
+                          <input type="text" matInput  placeholder="Product SKU"
+                            aria-label="Username" formControlName="distributionCenterID" (change)="onChangeDistributionId($event)">
+                          </mat-form-field>  
                         </div>
                       </div>
 
                       <div class="col-md-3">
                         <div class="form-group">
-                          <label for="exampleFormControlSelect3">Distribution Central Name</label>
-                          <input type="text" class="form-control form-control-sm" placeholder="Product SKU"
-                            aria-label="Username" formControlName="distributionCentralName" (change)="onChangeDistributionName($event)" />
+                          <mat-form-field>
+                          <mat-label>Distribution Central Name</mat-label>
+                          <input type="text" matInput  placeholder="Product SKU"
+                            aria-label="Username" formControlName="distributionCentralName" (change)="onChangeDistributionName($event)">
+                          </mat-form-field>  
                         </div>
                       </div>
 

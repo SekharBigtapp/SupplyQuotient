@@ -166,7 +166,7 @@ export class UsersComponent implements OnInit {
           "Password": this.addUserform.value.Password,
           "Role" : this.addUserform.value.Role.toString(),
         }
-        alert()
+        
         this.userservices.AddUsers(obj).subscribe((response) =>{
           console.log(response);
           // this.router.navigateByUrl('/user')

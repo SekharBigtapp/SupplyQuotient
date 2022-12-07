@@ -59,11 +59,15 @@ import { NotificationComponent } from './shared/notification/notification.compon
 import { DialogComponent } from './dialog/dialog.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RolesComponent } from './modules/admin/roles/roles.component';
+import { SubMenuComponent } from './modules/admin/sub-menu/sub-menu.component';
 import { MenuComponent } from './modules/admin/menu/menu.component';
+import { UserIdleModule } from 'angular-user-idle';
 
 @NgModule({
   declarations: [
+
     AppComponent,
+    
    HeaderComponent,
     FooterComponent,
     //DashboardComponent,
@@ -98,7 +102,9 @@ import { MenuComponent } from './modules/admin/menu/menu.component';
     // SchedulingConfigComponent,
     UsersComponent,
     RolesComponent,
+    SubMenuComponent,
     AddUserComponent,
+    MenuComponent,
     NotificationComponent,
     //DialogComponent
     MenuComponent,
@@ -123,8 +129,7 @@ import { MenuComponent } from './modules/admin/menu/menu.component';
     MatAutocompleteModule,
     MatDialogModule,
     MatSnackBarModule,
-
-
+    UserIdleModule.forRoot({ idle: 600, timeout: 300, ping: 120 })
     
   ],
   providers: [DataStorageService,AuthGuard],

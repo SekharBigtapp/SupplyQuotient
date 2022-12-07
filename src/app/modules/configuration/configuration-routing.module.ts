@@ -15,8 +15,8 @@ const routes: Routes = [
   { path: 'systemConfig', component: SystemconfigComponent, },
   { path: 'storeTransfer', component: StoreStoreTransferConfigComponent, },
   { path: 'scheduling', component: SchedulingConfigComponent, },
-  { path: 'monotonicconfig', component: MonotonicConstraintsComponent },
-  { path: 'forecastconfig', component: ForecastedConfigComponent },
+  { path: 'monotonicConfig', component: MonotonicConstraintsComponent },
+  { path: 'forecastConfig', component: ForecastedConfigComponent },
 
 ];
 

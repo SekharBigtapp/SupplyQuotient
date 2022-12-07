@@ -59,75 +59,76 @@
                         <div class="row">
                           <div class="col-md-3">
                             <div class="form-group">
-                              <label for="exampleFormControlSelect1">Back Testing</label>
-                              <!-- <input type="date" class="form-control form-control-sm" value="21-08-2022" aria-label="date"
-                                formControlName="Date" /> -->
-
-                              <select class="form-control form-control-sm" id="exampleFormControlSelect1"
-                                formControlName="Date" placeholder="Time_Key">
-                                <option value="10">10 Days</option>
-                                <option value="20">20 Days </option>
-                                <option value="30">30 Days </option>
-                                <option value="60">60 Days </option>
-                                <option value="90">90 Days </option>
-                              </select>
+                              <mat-form-field>
+                              <mat-label>Back Testing</mat-label>
+                              <mat-select  id="exampleFormControlSelect1" formControlName="Date" placeholder="Time_Key">
+                                <mat-option value="10">10 Days</mat-option>
+                                <mat-option value="20">20 Days </mat-option>
+                                <mat-option value="30">30 Days </mat-option>
+                                <mat-option value="60">60 Days </mat-option>
+                                <mat-option value="90">90 Days </mat-option>
+                              </mat-select>
+                              </mat-form-field>
                             </div>
                           </div>
 
                           <div class="col-md-3">
                             <div class="form-group">
-                              <!-- <label for="exampleFormControlSelect1">Store Name</label>
-                              <input type="text" class="form-control form-control-sm" placeholder="Store Name"
-                                aria-label="storename" formControlName="Store_Name" />
-                            -->
-                              <label for="exampleFormControlSelect1">Store Name</label>
-                              <select class="form-control form-control-sm" id="exampleFormControlSelect1"
-                                formControlName="Store_Name">
-                                <option *ngFor="let store of storeNameList" [value]="store.store_name">
+                              <mat-form-field>
+                              <mat-label>Store Name</mat-label>
+                              <mat-select  id="exampleFormControlSelect1" formControlName="Store_Name">
+                                <mat-option *ngFor="let store of storeNameList" [value]="store.store_name">
                                   {{store.store_name}}
-                                </option>
-                              </select>
+                                </mat-option>
+                              </mat-select>
+                              </mat-form-field>
                             </div>
                           </div>
 
                           <div class="col-md-3">
                             <div class="form-group">
-                              <label for="exampleFormControlSelect2">Product Categories</label>
-                              <select class="form-control form-control-sm" formControlName="Category_Name"
-                                (change)="getSubCategorysList()">
-                                <option *ngFor="let category of categorysList" [value]="category.prod_cat">
-                                  {{category.prod_cat}}</option>
-                              </select>
+                              <mat-form-field>
+                              <mat-label>Product Categories</mat-label>
+                              <mat-select  formControlName="Category_Name" (change)="getSubCategorysList()">
+                                <mat-option *ngFor="let category of categorysList" [value]="category.prod_cat">
+                                  {{category.prod_cat}}</mat-option>
+                              </mat-select>
+                              </mat-form-field>
                             </div>
                           </div>
 
                           <div class="col-md-3">
                             <div class="form-group">
-                              <label for="exampleFormControlSelect2">Sub Categories</label>
-                              <select class="form-control form-control-sm" formControlName="Subcategory_Name">
-                                <option *ngFor="let subProduct of subCategorysValues" [value]="subProduct.prod_subcat">
-                                  {{subProduct.prod_subcat}}</option>
-                              </select>
-                            </div>
-                          </div>
-
-
-                          <div class="col-md-3">
-                            <div class="form-group">
-                              <label for="exampleFormControlSelect1">Product Name</label>
-                              <select class="form-control form-control-sm" formControlName="Product_Name">
-                                <option *ngFor="let products of productNameList" [value]="products.prod_name">
-                                  {{products.prod_name}}</option>
-                              </select>
+                              <mat-form-field>
+                              <mat-label>Sub Categories</mat-label>
+                              <mat-select formControlName="Subcategory_Name">
+                                <mat-option *ngFor="let subProduct of subCategorysValues" [value]="subProduct.prod_subcat">
+                                  {{subProduct.prod_subcat}}</mat-option>
+                              </mat-select>
+                              </mat-form-field>
                             </div>
                           </div>
 
 
                           <div class="col-md-3">
                             <div class="form-group">
-                              <label for="exampleFormControlSelect3"> SKU Code</label>
-                              <input type="text" class="form-control form-control-sm" placeholder="SKU Code"
-                                aria-label="skucode" formControlName="SKU_ID" />
+                              <mat-form-field>
+                              <mat-label>Product Name</mat-label>
+                              <mat-select formControlName="Product_Name">
+                                <mat-option *ngFor="let products of productNameList" [value]="products.prod_name">
+                                  {{products.prod_name}}</mat-option>
+                              </mat-select>
+                              </mat-form-field>
+                            </div>
+                          </div>
+
+
+                          <div class="col-md-3">
+                            <div class="form-group">
+                              <mat-form-field>
+                              <mat-label>SKU Code</mat-label>
+                              <input type="text" matInput placeholder="SKU Code" aria-label="skucode" formControlName="SKU_ID">
+                              </mat-form-field>
                             </div>
                           </div>
 

@@ -41,12 +41,7 @@
                     <div class="row">
                       <div class="col-md-3">
                         <div class="form-group">
-                        <!-- <label for="exampleFormControlSelect3">Product Name</label>
-                        <select class="form-control form-control-sm" formControlName="productName">
-                          <option *ngFor="let products of productNameList" [value]="products.prod_name">{{products.prod_name}}</option>
-                        </select> -->
-
-                        <mat-form-field>
+                          <mat-form-field>
                           <mat-label>Product Name</mat-label>
                           <input type="text" matInput [formControl]="productName" [(ngModel)]="productnamefield" [matAutocomplete]="auto">
                           <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onChangeProductName($event)">
@@ -54,20 +49,13 @@
                               {{products.prod_name}}
                             </mat-option>
                           </mat-autocomplete>
-                        </mat-form-field>
-                        
+                        </mat-form-field>                        
                         </div>
                       </div>
 
                       <div class="col-md-3">
                         <div class="form-group">
-                          <!-- <label for="exampleFormControlSelect2">Product Categories</label>
-                          <select class="form-control form-control-sm" formControlName="productCategories">
-                            <option *ngFor="let category of categoryList" [value]="category.prod_cat">
-                              {{category.prod_cat}}</option>
-                          </select> -->
-
-                          <mat-form-field>
+                         <mat-form-field>
                             <mat-label>Product Categories</mat-label>
                             <input type="text" matInput [formControl]="productCategories" [(ngModel)]="categorynamefield" [matAutocomplete]="auto1">
                             <mat-autocomplete #auto1="matAutocomplete">
@@ -76,19 +64,19 @@
                               </mat-option>
                             </mat-autocomplete>
                           </mat-form-field>
-                         
-                          
-                        </div>
+                         </div>
                       </div>                      
 
                       <div class="col-md-3">
                         <div class="form-group">
-                          <label for="exampleFormControlSelect3"> SKU Code</label>
-                          <input type="text" class="form-control form-control-sm" placeholder="Product SKU"
-                            aria-label="Username" formControlName="SKUCode" (change)="onChangeSkuId($event)"/>
+                          <mat-form-field>
+                          <mat-label>SKU Code</mat-label>
+                          <input type="text"  placeholder="Product SKU" matInput
+                            aria-label="Username" formControlName="SKUCode" (change)="onChangeSkuId($event)">
+                         </mat-form-field>
                         </div>
                       </div>
-
+<!-- 
                       <div class="col-md-3">
                         <div class="form-group">
                           <label for="exampleFormControlSelect3">Product Status</label>
@@ -98,37 +86,9 @@
                             <option value="0">In-Active</option>
                           </select>
                         </div>
-                      </div>
-
-                      <!-- <div class="col-md-3">
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect2">Manufacturer	</label>
-                        <select class="form-control form-control-sm" id="exampleFormControlSelect1">
-                          <option>Manufacturer 1</option>
-                          <option>Manufacturer 2</option>
-                          <option>Manufacturer 3</option>
-
-                        </select>
-                      </div>
-                    </div> -->
-
-                      <!-- <div class="col-md-3">
-                        <div class="form-group">
-                          <label for="exampleFormControlSelect2">Vendor</label>
-                          <select class="form-control form-control-sm" id="exampleFormControlSelect1"
-                            formControlName="vendor">
-                            <option>Vendor 1</option>
-                            <option>Vendor 2</option>
-                            <option>Vendor 3</option>
-
-                          </select>
-                        </div>
                       </div> -->
 
-
-
-                      
-                      <div class="col-md-3">
+                    <div class="col-md-3">
                         <label> &nbsp; </label> <br>
                         <button type="submit" class=" btn btn-sm btn-success mt-2 mt-sm-0 btn-icon-text">
                           <i class="mdi mdi-checkbox-marked-circle-outline"></i> Filter </button>
