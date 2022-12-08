@@ -107,6 +107,7 @@ import { UserIdleModule } from 'angular-user-idle';
     MenuComponent,
     NotificationComponent,
     //DialogComponent
+    MenuComponent,
   ],
   imports: [
     BrowserModule,

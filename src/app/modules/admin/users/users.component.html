@@ -43,9 +43,12 @@
                   <div class="clearfix"></div>
                 </div>
 
-
-            <div class="card-body pt-0 pb-0">
-              <div class="filter-table-data mt-3" *ngIf="isAddUserForm">
+            
+            <div class="card-body pt-0 pb-0"  *ngIf="isAddUserForm">
+              <div class="card-header" style="background-color:#bbb3cf ;">
+                <h5> Add User</h5>
+              </div>
+              <div class="filter-table-data p-3"  style="background-color:#ebf6fc;">
                 <form [formGroup]="addUserform" (ngSubmit)="onAddUserSubmit()" >
                     <div class="row">
                         <div class="col-md-4">
