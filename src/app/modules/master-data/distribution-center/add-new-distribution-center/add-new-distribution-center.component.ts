@@ -89,7 +89,7 @@ export class AddNewDistributionCenterComponent implements OnInit {
     }
     this.distributionCenterService.addNewDistribution(obj).subscribe((response) => {
       console.log(response);
-      this.router.navigateByUrl('/distributionmaster')
+      this.router.navigateByUrl('/masters/distributionMaster')
      
     })
 

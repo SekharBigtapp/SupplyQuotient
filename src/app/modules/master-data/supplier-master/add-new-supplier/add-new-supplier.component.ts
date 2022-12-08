@@ -83,7 +83,7 @@ export class AddNewSupplierComponent implements OnInit {
     }
     this.supplerMasterService.addNewSupplierData(obj).subscribe((response) => {
       console.log(response);
-      this.router.navigateByUrl('/suppliermaster')
+      this.router.navigateByUrl('/masters/supplierMaster')
      
     })
   }

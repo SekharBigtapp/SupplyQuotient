@@ -25,10 +25,10 @@
                   <div class="">
                     <h3 class="d-inline-block"> SubMenu </h3>
                     <span class="float-end mb-2">
-                      <button type="button" class="btn btn-success btn-rounded"
-                          *ngIf="!isAddSubMenuForm" (click)="onAddSubMenu()"> Add SubMenu </button>
-                     <button type="button" class="btn btn-warning btn-rounded mx-2"
-                          *ngIf="!isAddSubMenuForm" (click)="onBack()"> Back </button> 
+                      <button type="button" class="btn btn-sm btn-success btn-rounded mt-2 mt-sm-0 btn-icon-text" *ngIf="!isAddSubMenuForm" (click)="onAddSubMenu()">
+                           <i class="mdi mdi-checkbox-marked-circle-outline"></i> Add SubMenu </button>
+                     <button type="button" class="btn btn-sm btn-warning btn-rounded mx-2 mt-2 mt-sm-0 btn-icon-text" *ngIf="!isAddSubMenuForm" (click)="onBack()"> 
+                      Back </button> 
                           
                  </span>
                   <div style="height:10px">
@@ -61,8 +61,8 @@
                             <div class="col-md-6">
                               <div class="mb-3 mt-1 pt-1">
                                 <span class=" mb-2">
-                                  <button type="button" class="btn btn-success btn-rounded"
-                                  *ngIf="!isAddSubMenuForm" > Submit </button>
+                                  <button type="button" class="btn btn-success btn-rounded" *ngIf="!isAddSubMenuForm" >
+                                     Submit </button>
                                   </span>
                               </div>
                             </div>                    
@@ -120,10 +120,10 @@
                     </div>                    
                     <div class="row">
                         <div class="col-md-12 float-right" >
-                        <button type="submit" class=" btn btn-sm btn-success mt-2 mt-sm-0 btn-icon-text" style="margin-left: 15px;" >
+                        <button type="submit" class=" btn btn-sm btn-primary btn-rounded mt-2 mt-sm-0 btn-icon-text" style="margin-left: 15px;" >
                             <i class="mdi mdi-checkbox-marked-circle-outline"></i> Save </button>
-                        <button type="submit" class=" btn btn-sm btn-secondary mt-2 mt-sm-0 btn-icon-text" (click)="cancelClick()" style="margin-left: 15px;" >
-                            <i class="mdi mdi-checkbox-marked-circle-outline" ></i> Cancel </button>
+                        <button type="submit" class=" btn btn-sm btn-warning btn-rounded mt-2 mt-sm-0 btn-icon-text" (click)="cancelClick()" style="margin-left: 15px;" >
+                            <i class="mdi mdi-close-circle-outline" ></i> Cancel </button>
                           
                         </div>
                     </div>

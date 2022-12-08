@@ -30,119 +30,151 @@ export class LoginComponent implements OnInit {
       { type: 'maxlength', message: 'Password should be maximum 20 characters.' }
     ]
   };
-  
+
   errorFlag: boolean = false;
   authorizationMessage: any;
   constructor(private router: Router,
     private formBuilder: FormBuilder,
     private loginService: LoginService,
-    private useridle : UserIdleService,
-    public dataStorage: DataStorageService) 
-    {
-      
-     }
+    private useridle: UserIdleService,
+    public dataStorage: DataStorageService) {
 
-
-     ngOnInit(): void {
-      if (this.dataStorage.isUserLoggedIn) {
-        let data = localStorage.getItem("Token_generated");
-        if (data) {
-          //this.loginData = JSON.parse(data);
-          this.router.navigateByUrl("dashboard")
-        }        
-      }
-      this.LoginForm = this.formBuilder.group({
-        userEmail: [
-          null,
-          Validators.compose([
-            Validators.required,
-            Validators.maxLength(50),
-            Validators.pattern(
-              /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/
-            ),
-          ]),
-        ],
-        //password: ['', Validators.compose([Validators.required, Validators.minLength(12), Validators.pattern(MyAppHttp.passwordValidation)])],
-        password: ['', Validators.compose([Validators.required])],
-        //rememberMe: [false]
-      });
-  
-    }
-
-    stopWatching() {
-      this.useridle.stopWatching();
-    }
-    clkSignin() {
-      if (this.LoginForm.valid) {
-       // alert("login")
-        localStorage.setItem("Email", this.LoginForm.value.userEmail);
-        localStorage.setItem("password", this.LoginForm.value.password);
-        //let encryptedPassword = btoa(this.LoginForm.value.password);
-        this.loginService.getLoginDetails(
-          {
-            "Email": this.LoginForm.value.userEmail,
-            "Password": this.LoginForm.value.password,
-          }
-        ).subscribe((response:any) => {
-          console.log(response)
-          //this.onSuccessfullLogin(response);
-          this.router.navigateByUrl("dashboard")
-          this.authorizationMessage = MyAppHttp.ToasterMessage.activeOrNot;
-          this.dataStorage.isUserLoggedIn = true
-          localStorage.setItem("Token_generated", response.Token_generated);
-          localStorage.setItem("Email", response.userEmail)
-          localStorage.setItem("role", response.role)
-          localStorage.setItem("username", response.username)
-        }, (error) => {
-          console.log(error.error.message)
-          this.errorFlag = true;
-          this.authorizationMessage = error.error.message;
-          // let errorMessage = error.error.response.message;
-          // this.sendReceiveService.showToast(MyAppHttp.ToastType.ERROR, 'Error', errorMessage);
-        });
-      }
-      else {
-        this.errorFlag = true;
-        // this.authorizationMessage = response.message;
-        //this.sendReceiveService.showToast(MyAppHttp.ToastType.ERROR, 'Error', response.message);
-      }
-    }
-    // onSuccessfullLogin(response: any) {
-    //   localStorage.clear();
-    //   this.dataStorage.isUserLoggedIn = true;
-    //   localStorage.setItem("Token_generated", response.Token_generated);
-    //   localStorage.setItem("Email", response.userEmail)
-    //   localStorage.setItem("role", response.role)
-    //   localStorage.setItem("username", response.username)
-    //   let data = localStorage.getItem("Token_generated");
-    //   if (data) {
-    //     //this.loginData = JSON.parse(data);
-    //     this.router.navigateByUrl("dashboard")
-    //   }
-    //   if (this.loginData) {
-    //     //this.getAllPermittedModules();
-    //   }
-    //   this.useridle.startWatching();
-    //   this.useridle.onTimerStart().subscribe((count) => {
-    //     if (count > 1) {
-    //       this.loginService.UserLogout(this.loginData.userId).subscribe((resp: any) => {
-    //         localStorage.clear();
-    //         this.dataStorage.isUserLoggedIn = false;
-    //         this.router.navigateByUrl('/');
-           
-    //       });
-    //       console.log(count)
-    //       this.stopWatching();
-    //     }
-  
-    //   });
-    //   this.useridle.onTimeout().subscribe(() => console.log('Time is up!'));
-    // }
-
-    
   }
 
-  
+
+  ngOnInit(): void {
+    if (this.dataStorage.isUserLoggedIn) {
+      let data = localStorage.getItem("Token_generated");
+      if (data) {
+        //this.loginData = JSON.parse(data);
+        this.router.navigateByUrl("dashboard")
+      }
+    }
+    this.LoginForm = this.formBuilder.group({
+      userEmail: [
+        null,
+        Validators.compose([
+          Validators.required,
+          Validators.maxLength(50),
+          Validators.pattern(
+            /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/
+          ),
+        ]),
+      ],
+      //password: ['', Validators.compose([Validators.required, Validators.minLength(12), Validators.pattern(MyAppHttp.passwordValidation)])],
+      password: ['', Validators.compose([Validators.required])],
+      //rememberMe: [false]
+    });
+
+  }
+
+  stopWatching() {
+    this.useridle.stopWatching();
+  }
+  clkSignin() {
+    if (this.LoginForm.valid) {
+      // alert("login")
+      localStorage.setItem("Email", this.LoginForm.value.userEmail);
+      localStorage.setItem("password", this.LoginForm.value.password);
+      //let encryptedPassword = btoa(this.LoginForm.value.password);
+      this.loginService.getLoginDetails(
+        {
+          "Email": this.LoginForm.value.userEmail,
+          "Password": this.LoginForm.value.password,
+        }
+      ).subscribe((response: any) => {
+        console.log(response)
+        //this.onSuccessfullLogin(response);
+        this.router.navigateByUrl("dashboard")
+        this.authorizationMessage = MyAppHttp.ToasterMessage.activeOrNot;
+        this.dataStorage.isUserLoggedIn = true
+        localStorage.setItem("Token_generated", response.Token_generated);
+        localStorage.setItem("Email", response.userEmail)
+        localStorage.setItem("role", response.role)
+        localStorage.setItem("username", response.username)
+      }, (error) => {
+        console.log(error.error.message)
+        this.errorFlag = true;
+        this.authorizationMessage = error.error.message;
+        // let errorMessage = error.error.response.message;
+        // this.sendReceiveService.showToast(MyAppHttp.ToastType.ERROR, 'Error', errorMessage);
+      });
+    }
+    else {
+      this.errorFlag = true;
+      // this.authorizationMessage = response.message;
+      //this.sendReceiveService.showToast(MyAppHttp.ToastType.ERROR, 'Error', response.message);
+    }
+    console.log("Timmer is Starting");
+    this.useridle.startWatching();
+    this.useridle.onTimerStart().subscribe({
+      next: (count) => {
+        console.log(count);
+        if (count > 1) {
+          console.log("time is out ===> logout");
+          let obj = {
+            "Username": localStorage.getItem("username"),
+            "Token_generated": localStorage.getItem("Token_generated")
+          }
+          console.log(obj);
+          this.loginService.UserLogout(obj).subscribe({
+            next: (response) => {
+              console.log(response);
+              localStorage.clear();
+              this.dataStorage.isUserLoggedIn = false;
+              this.stopWatching();
+              this.router.navigateByUrl('');
+            },
+            error: (error) => {
+
+            }
+          });
+        } else {
+          console.log("Working in use");
+        }
+      },
+      error: (error) => {
+        alert("anji");
+      }
+    });
+    this.useridle.onTimeout().subscribe(() => console.log('Time is up!'));
+  }
+  // onSuccessfullLogin(response: any) {
+  //   localStorage.clear();
+  //   this.dataStorage.isUserLoggedIn = true;
+  //   localStorage.setItem("Token_generated", response.Token_generated);
+  //   localStorage.setItem("Email", response.userEmail)
+  //   localStorage.setItem("role", response.role)
+  //   localStorage.setItem("username", response.username)
+  //   let data = localStorage.getItem("Token_generated");
+  //   if (data) {
+  //     //this.loginData = JSON.parse(data);
+  //     this.router.navigateByUrl("dashboard")
+  //   }
+  //   if (this.loginData) {
+  //     //this.getAllPermittedModules();
+  //   }
+  //   this.useridle.startWatching();
+  //   this.useridle.onTimerStart().subscribe((count) => {
+  //     if (count > 1) {
+  //       this.loginService.UserLogout(this.loginData.userId).subscribe((resp: any) => {
+  //         localStorage.clear();
+  //         this.dataStorage.isUserLoggedIn = false;
+  //         this.router.navigateByUrl('/');
+
+  //       });
+  //       console.log(count)
+  //       this.stopWatching();
+  //     }
+
+  //   });
+  //   this.useridle.onTimeout().subscribe(() => console.log('Time is up!'));
+  // }
+
+
+}
+
+
 function dashboard(dashboard: any) {
   throw new Error('Function not implemented.');
 }

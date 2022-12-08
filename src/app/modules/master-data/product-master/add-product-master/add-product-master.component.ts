@@ -85,7 +85,7 @@ export class AddProductMasterComponent implements OnInit {
     }
     this.productMasterService.addNewproductMasterData(Obj).subscribe((response) => {
       console.log(response);
-      this.router.navigateByUrl('/productmaster')
+      this.router.navigateByUrl('/masters/productMaster')
     })
 
   }

@@ -14,13 +14,13 @@ export class TopBarComponent implements OnInit {
   username: any;
   userRole: any;
 
-  token:any;
+  token: any;
   constructor(
     private router: Router,
     private loginService: LoginService,
     public dataStorage: DataStorageService
-  ) { 
-    
+  ) {
+
   }
 
   ngOnInit(): void {
@@ -32,44 +32,39 @@ export class TopBarComponent implements OnInit {
       //   this.username = JSON.parse(username);
       //   this.userRole = JSON.parse(userRole);
       // }
-      
-      
+
+
     }
 
     // 
-    
-    
-    
+
+
+
   }
 
 
   onSignOut() {
     //alert();
     // debugger;
-    alert("Aru sure you want to signout");
-  
-    
+    alert("Are sure you want to signout");
+
     //debugger;
-    let obj= {
+    let obj = {
       "Username": this.username,
       "Token_generated": localStorage.getItem("Token_generated")
     }
 
-        
-    this.loginService.UserLogout(obj).subscribe((response)=>{
+    console.log(obj);
+    this.loginService.UserLogout(obj).subscribe((response) => {
       console.log(response)
-      localStorage.clear();      
+      localStorage.clear();
       this.dataStorage.isUserLoggedIn = false;
       this.router.navigateByUrl("/")
-    //   localStorage.removeItem('username');
-    // localStorage.removeItem('token');
-    // localStorage.removeItem('userRole');
-     
+      //   localStorage.removeItem('username');
+      // localStorage.removeItem('token');
+      // localStorage.removeItem('userRole');
 
-      
-      
-      
-    }, (error)=>{console.log(error)}
+    }, (error) => { console.log(error) }
     )
   }
 
