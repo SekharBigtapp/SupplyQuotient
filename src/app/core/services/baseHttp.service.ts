@@ -12,7 +12,7 @@ export abstract class BaseHttp {
 
 
     get<T>(url: string): Observable<T> {
-        let  bearer: any = localStorage.getItem('Token_generated');
+        let  bearer: any = localStorage.getItem('userToken');
         const header = new HttpHeaders({
             'Content-Type': 'application/json',
             // 'token': bearer,
@@ -25,7 +25,7 @@ export abstract class BaseHttp {
     }
 
     post<T>(url: string, body: any): Observable<T> {
-        let  bearer: any = localStorage.getItem('Token_generated');
+        let  bearer: any = localStorage.getItem('userToken');
         
         const header = new HttpHeaders({
             'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ export abstract class BaseHttp {
     }
 
     logout<T>(url: string, body: any): Observable<T> {
-        let  bearer: any = localStorage.getItem('Token_generated');
+        let  bearer: any = localStorage.getItem('userToken');
         
         const header = new HttpHeaders({
             'Content-Type': 'application/json',

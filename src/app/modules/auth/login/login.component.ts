@@ -6,6 +6,7 @@ import { LoginService } from './services/login.service';
 import { BaseHttp } from 'src/app/core/services/baseHttp.service';
 import MyAppHttp from 'src/app/core/services/myAppHttp.service';
 import { UserIdleService } from 'angular-user-idle';
+import { UserServices } from '../../admin/users/user.services';
 
 @Component({
   selector: 'app-login',
@@ -44,7 +45,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.dataStorage.isUserLoggedIn) {
-      let data = localStorage.getItem("Token_generated");
+      let data = localStorage.getItem("userToken");
       if (data) {
         //this.loginData = JSON.parse(data);
         this.router.navigateByUrl("dashboard")
@@ -82,16 +83,17 @@ export class LoginComponent implements OnInit {
           "Email": this.LoginForm.value.userEmail,
           "Password": this.LoginForm.value.password,
         }
-      ).subscribe((response: any) => {
+      ).subscribe((response) => {
+        alert(response)
         console.log(response)
         //this.onSuccessfullLogin(response);
         this.router.navigateByUrl("dashboard")
         this.authorizationMessage = MyAppHttp.ToasterMessage.activeOrNot;
         this.dataStorage.isUserLoggedIn = true
-        localStorage.setItem("Token_generated", response.Token_generated);
-        localStorage.setItem("Email", response.userEmail)
-        localStorage.setItem("role", response.role)
-        localStorage.setItem("username", response.username)
+        localStorage.setItem("userToken", response.userdetails.userToken);
+        localStorage.setItem("Email", response.userdetails.userEmail)
+        localStorage.setItem("userRole", response.userdetails.userRole)
+        localStorage.setItem("userId", response.userdetails.userId)
       }, (error) => {
         console.log(error.error.message)
         this.errorFlag = true;
@@ -113,8 +115,8 @@ export class LoginComponent implements OnInit {
         if (count > 1) {
           console.log("time is out ===> logout");
           let obj = {
-            "Username": localStorage.getItem("username"),
-            "Token_generated": localStorage.getItem("Token_generated")
+            "userId": localStorage.getItem("userId"),
+            "userToken": localStorage.getItem("userToken")
           }
           console.log(obj);
           this.loginService.UserLogout(obj).subscribe({

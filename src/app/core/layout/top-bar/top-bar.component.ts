@@ -24,9 +24,9 @@ export class TopBarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (localStorage.getItem("username") && (localStorage.getItem("role"))) {
-      this.username = localStorage.getItem("username");
-      this.userRole = localStorage.getItem("role");
+    if (localStorage.getItem("userId") && (localStorage.getItem("userRole"))) {
+      this.username = localStorage.getItem("userId");
+      this.userRole = localStorage.getItem("userRole");
       //this.token = localStorage.getItem("token")
       // if ((username) && (userRole)) {
       //   this.username = JSON.parse(username);
@@ -50,8 +50,8 @@ export class TopBarComponent implements OnInit {
 
     //debugger;
     let obj = {
-      "Username": this.username,
-      "Token_generated": localStorage.getItem("Token_generated")
+      "userId": this.username,
+      "userToken": localStorage.getItem("userToken")
     }
 
     console.log(obj);

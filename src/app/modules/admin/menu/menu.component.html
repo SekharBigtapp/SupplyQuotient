@@ -37,7 +37,7 @@
                   <div class="">
                     <h3 class="d-inline-block"> Menu </h3>
                     <span class="float-end mb-2">
-                      <button type="button" class="float-end btn btn-sm btn-primary mt-1 mt-sm-0 btn-icon-text "
+                      <button type="button" class="float-end btn btn-sm btn-primary btn-rounded mt-1 mt-sm-0 btn-icon-text "
                       *ngIf="!isAddMenuForm" (click)="onAddMenuClick()"><i class="mdi mdi-plus-circle"></i>
                           Add Menu </button>
                   </span>
@@ -79,12 +79,12 @@
                             </div>
 
                             <div class="col-md-4">
-                                <button type="submit" class=" btn btn-sm btn-success mt-2 mt-sm-0 btn-icon-text" style="margin-left: 15px;" >
+                                <button type="submit" class=" btn btn-sm btn-primary btn-rounded mt-2 mt-sm-0 btn-icon-text" style="margin-left: 15px;" >
                                     <i class="mdi mdi-checkbox-marked-circle-outline"></i> Save </button>
-                                <button type="submit" class=" btn btn-sm btn-secondary mt-2 mt-sm-0 btn-icon-text" (click)="cancelClick()" style="margin-left: 15px;" >
-                                    <i class="mdi mdi-checkbox-marked-circle-outline" ></i> Cancel </button>
-                                  <button type="button" class=" btn btn-sm btn-secondary mt-2 mt-sm-0 btn-icon-text" (click)="clearClick()" style="margin-left: 15px;" >
-                                    <i class="mdi mdi-checkbox-marked-circle-outline"  ></i> Clear </button>
+                                <button type="submit" class=" btn btn-sm btn-warning btn-rounded mt-2 mt-sm-0 btn-icon-text" (click)="cancelClick()" style="margin-left: 15px;" >
+                                    <i class="mdi mdi-close-circle-outline" ></i> Cancel </button>
+                                  <!-- <button type="button" class=" btn btn-sm btn-warning btn-rounded mt-2 mt-sm-0 btn-icon-text" (click)="clearClick()" style="margin-left: 15px;" >
+                                    <i class="mdi mdi-close-circle-outline"  ></i> Clear </button> -->
                             </div>
                         </div>
                         </form>
@@ -122,9 +122,8 @@
                           <td mat-cell *matCellDef="let element"> 
                             <span matTooltip="Edit" style="cursor: pointer;"  (click)="onMenuEdit(element)">
                                 <i class="fa fa-edit" aria-hidden="true"></i></span> &nbsp; 
-                        <span matTooltip="Delete" style="cursor: pointer;"  (click)="onMenuDelete(element)">
-                            <i class="fa fa-trash" aria-hidden="true"></i></span>
-                            
+                          <span matTooltip="Delete" style="cursor: pointer;"  (click)="onMenuDelete(element)">
+                            <i class="fa fa-trash" aria-hidden="true"></i></span>                            
                           </td>
                         </ng-container>
                       
