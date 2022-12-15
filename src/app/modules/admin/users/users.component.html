@@ -32,9 +32,8 @@
                   <div class="">
                     <h3 class="d-inline-block"> Users </h3>
                     <span class="float-end mb-2">
-                      <button type="button" class="float-end btn btn-sm btn-primary mt-1 mt-sm-0 btn-icon-text"
-                          *ngIf="!isAddUserForm" (click)="onAddUser()"> <i class="mdi mdi-plus-circle"></i>                          Add
-                          User </button>
+                      <button type="button" class="btn btn-sm btn-primary btn-rounded mt-2 mt-sm-0 btn-icon-text" *ngIf="!isAddUserForm" (click)="onAddUser()">
+                        <i class="mdi mdi-checkbox-marked-circle-outline"></i> Add User </button>
                   </span>
                   <div style="height:10px">
                       <div *ngIf="errorMessage" [ngStyle]="{'color': errorType == 'Error' ? 'red':'green'}"
@@ -53,7 +52,7 @@
                 <form [formGroup]="addUserform" (ngSubmit)="onAddUserSubmit()" >
                     <div class="row">
                         <div class="col-md-4">
-                              <mat-form-field>
+                              <mat-form-field class="pt-2">
                                 <input type="text" matInput class="form-control" id="Username" formControlName="Username" placeholder="Username">
                                 <mat-error *ngFor = "let validation of validation_messages.Username">
                                   <span *ngIf ="addUserform.get('Username').hasError(validation.type)">
@@ -66,7 +65,7 @@
                         </div>
 
                         <div class="col-md-4">
-                              <mat-form-field>
+                              <mat-form-field class="pt-2">
                                 <input type="text" matInput class="form-control" id="Display_Name" formControlName="Display_Name" placeholder="Display_Name">
                                 <mat-error *ngFor = "let validation of validation_messages.Display_Name">
                                   <span *ngIf ="addUserform.get('Display_Name').hasError(validation.type)">
@@ -79,7 +78,7 @@
                         </div>
 
                         <div class="col-md-4">
-                              <mat-form-field>
+                              <mat-form-field class="pt-2">
                                 <input type="email" matInput class="form-control" id="email" formControlName="email" placeholder="Email Id">
                                 <mat-error *ngFor = "let validation of validation_messages.email">
                                   <span *ngIf ="addUserform.get('email').hasError(validation.type)">
@@ -91,7 +90,7 @@
                         </div>
 
                         <div class="col-md-4">
-                            <mat-form-field>
+                            <mat-form-field class="pt-2">
                               <input type="password" matInput class="form-control" id="Password" formControlName="Password" placeholder="Password">
                               <mat-error *ngFor = "let validation of validation_messages.Password">
                                 <span *ngIf ="addUserform.get('Password').hasError(validation.type)">
@@ -103,7 +102,7 @@
                       </div>
 
                         <div class="col-md-4">
-                            <mat-form-field >
+                            <mat-form-field class="pt-2">
                                 <mat-label>Select Role</mat-label>
                                 <mat-select formControlName="Role" required>
                                     <mat-option>Select Role</mat-option>
@@ -123,12 +122,12 @@
                     
                     <div class="row">
                         <div class="col-md-12 float-right" >
-                        <button type="submit" class=" btn btn-sm btn-success mt-2 mt-sm-0 btn-icon-text" style="margin-left: 15px;" >
+                        <button type="submit" class=" btn btn-sm btn-rounded btn-primary mt-2 mt-sm-0 btn-icon-text" style="margin-left: 15px;" >
                             <i class="mdi mdi-checkbox-marked-circle-outline"></i> Save </button>
-                        <button type="submit" class=" btn btn-sm btn-secondary mt-2 mt-sm-0 btn-icon-text" (click)="cancelClick()" style="margin-left: 15px;" >
-                            <i class="mdi mdi-checkbox-marked-circle-outline" ></i> Cancel </button>
-                          <button type="button" class=" btn btn-sm btn-secondary mt-2 mt-sm-0 btn-icon-text" (click)="clearClick()" style="margin-left: 15px;" >
-                            <i class="mdi mdi-checkbox-marked-circle-outline"  ></i> Clear </button>
+                        <button type="submit" class=" btn btn-sm btn-rounded btn-warning mt-2 mt-sm-0 btn-icon-text" (click)="cancelClick()" style="margin-left: 15px;" >
+                            <i class="mdi mdi-close-circle-outline" ></i> Cancel </button>
+                          <!-- <button type="button" class=" btn btn-sm btn-rounded btn-warning mt-2 mt-sm-0 btn-icon-text" (click)="clearClick()" style="margin-left: 15px;" >
+                            <i class="mdi mdi-close-circle-outline"  ></i> Clear </button> -->
                         </div>
                     </div>
                 </form>

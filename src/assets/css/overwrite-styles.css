@@ -40,6 +40,13 @@ body, .mat-table {
 .main-layout {
     min-height: 500px;
 }
+.btn i{
+  font-size: 15px;
+}
+.btn{
+  padding: 7px 12px;
+}
+
 .bg-primary {
     background-color: #007bff!important;
 }

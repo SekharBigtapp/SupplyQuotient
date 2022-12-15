@@ -16,7 +16,7 @@
             </a>
           </div>
           <div class="" style="display: inline-block;  float: right;">
-            <button type="button" (click)="backButtonClick()" class=" btn btn-sm btn-success btn-icon-text"
+            <button type="button" (click)="backButtonClick()" class=" btn btn-sm btn-primary btn-rounded btn-icon-text"
               style="height:30px">
               <i class="mdi mdi-arrow-left"></i> Back</button>
           </div>
@@ -69,11 +69,12 @@
 
                       <div class="col-md-3">
                         <div class="form-group">
-                          <label for="exampleFormControlSelect3">Store Name</label>
-                          <select class="form-control form-control-sm" id="exampleFormControlSelect1"
-                            formControlName="storeName">
-                            <option *ngFor="let store of storeNameList" [value]="store.Store_Name">{{store.Store_Name}}</option>
-                          </select>
+                          <mat-form-field class="pt-2">
+                          <mat-label>Store Name</mat-label>
+                          <mat-select id="exampleFormControlSelect1" formControlName="storeName">
+                            <mat-option *ngFor="let store of storeNameList" [value]="store.Store_Name">{{store.Store_Name}}</mat-option>
+                          </mat-select>
+                          </mat-form-field>
                           <!-- <select class="form-control form-control-sm" id="exampleFormControlSelect1"
                             formControlName="storeName">
                             <option value="Electonic Store"> Electonic Store</option>
@@ -87,17 +88,19 @@
 
                       <div class="col-md-3">
                         <div class="form-group">
-                          <label for="exampleFormControlSelect3">SKU Code</label>
-                          <input type="text" class="form-control form-control-sm" placeholder="SKU Code"
-                            aria-label="SKUCode" formControlName="SKU_ID"  />
+                          <mat-form-field class="pt-2">
+                            <mat-label>SKU Code</mat-label>
+                          <input type="text" matInput placeholder="SKU Code" aria-label="SKUCode" formControlName="SKU_ID">
+                          </mat-form-field>
                         </div>
                       </div>
 
                       <div class="col-md-3">
                         <div class="form-group">
-                          <label for="exampleFormControlSelect3">Product Name</label>
-                          <select class="form-control form-control-sm" formControlName="productName">
-                            <option *ngFor="let product of productNameList" [value]="product.Product_Name">{{product.Product_Name}}</option>
+                          <mat-form-field class="pt-2">
+                          <mat-label>Product Name</mat-label>
+                          <mat-select formControlName="productName">
+                            <mat-option *ngFor="let product of productNameList" [value]="product.Product_Name">{{product.Product_Name}}</mat-option>
                             <!-- <option value="Zoggs Junior Character Batman Goggle Yellow/Black">Zoggs Junior Character
                               Batman Goggle Yellow/Black</option>
                             <option value="Legami Beach Towel - Panda">Legami Beach Towel - Panda</option>
@@ -117,7 +120,8 @@
                               LED TV </option>
                             <option value="SAMSUNG 40-inch Class LED Smart FHD TV 1080P">SAMSUNG 40-inch Class LED Smart
                               FHD TV 1080P</option> -->
-                          </select>
+                          </mat-select>
+                          </mat-form-field>
                           <!-- <input type="text" class="form-control form-control-sm" placeholder="Product Name"
                             aria-label="productName" formControlName="productName" /> -->
                         </div>
@@ -126,7 +130,7 @@
 
                       <div class="col-md-3">
                         
-                        <button type="submit" class=" btn btn-sm btn-success mt-2 mt-sm-0 btn-icon-text text-rigt">
+                        <button type="submit" class=" btn btn-sm btn-primary btn-rounded mt-2 mt-sm-0 btn-icon-text text-rigt">
                           <i class="mdi mdi-checkbox-marked-circle-outline"></i> Filter </button>
                       </div>
 

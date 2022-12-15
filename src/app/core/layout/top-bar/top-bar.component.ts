@@ -14,62 +14,63 @@ export class TopBarComponent implements OnInit {
   username: any;
   userRole: any;
 
-  token:any;
+  sidebar: boolean = false;
+
+  token: any;
   constructor(
     private router: Router,
     private loginService: LoginService,
     public dataStorage: DataStorageService
-  ) { 
-    
+  ) {
+
   }
 
   ngOnInit(): void {
-    if (localStorage.getItem("username") && (localStorage.getItem("role"))) {
-      this.username = localStorage.getItem("username");
-      this.userRole = localStorage.getItem("role");
+    if (localStorage.getItem("userId") && (localStorage.getItem("userRole"))) {
+      this.username = localStorage.getItem("userId");
+      this.userRole = localStorage.getItem("userRole");
       //this.token = localStorage.getItem("token")
       // if ((username) && (userRole)) {
       //   this.username = JSON.parse(username);
       //   this.userRole = JSON.parse(userRole);
       // }
-      
-      
+
+
     }
 
-    // 
     
-    
-    
+
+
   }
+
+  onMobileNavClick(){
+    this.sidebar = !this.sidebar;
+  }
+
 
 
   onSignOut() {
     //alert();
     // debugger;
-    alert("Aru sure you want to signout");
-  
-    
+    alert("Are sure you want to signout");
+
     //debugger;
-    let obj= {
+    let obj = {
       "Username": this.username,
-      "Token_generated": localStorage.getItem("Token_generated")
+      "Token_generated": localStorage.getItem("userToken")
     }
 
-        
-    this.loginService.UserLogout(obj).subscribe((response)=>{
+    console.log(obj);
+    this.loginService.UserLogout(obj).subscribe((response) => {
       console.log(response)
-      localStorage.clear();      
+      localStorage.clear();
       this.dataStorage.isUserLoggedIn = false;
       this.router.navigateByUrl("/")
-    //   localStorage.removeItem('username');
-    // localStorage.removeItem('token');
-    // localStorage.removeItem('userRole');
-     
+      //   localStorage.removeItem('username');
+      // localStorage.removeItem('token');
+      // localStorage.removeItem('userRole');
 
-      
-      
-      
-    }, (error)=>{console.log(error)}
+    }, (error) => { console.log(error) }
     )
   }
 

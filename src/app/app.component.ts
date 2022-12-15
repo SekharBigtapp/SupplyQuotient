@@ -24,7 +24,7 @@ export class AppComponent {
       if (e instanceof NavigationEnd) {
         window.scrollTo(0, 0);
         
-        if (localStorage.getItem("Token_generated")) { 
+        if (localStorage.getItem("userToken")) { 
           console.log(this.dataStorage.isUserLoggedIn);       
           this.dataStorage.isUserLoggedIn = true;         
         }

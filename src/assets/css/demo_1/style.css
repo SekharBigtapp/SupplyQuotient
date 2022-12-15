@@ -11906,9 +11906,7 @@ code {
     padding: 0 0 0 19px; }
   .main-panel .content-wrapper .header-right .btn-icon-text i {
     padding: 5px;
-    display: inline-block;
-    background: #069962;
-    margin-right: 15px;
+    display: inline-block; 
     border-radius: 0;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px; }
