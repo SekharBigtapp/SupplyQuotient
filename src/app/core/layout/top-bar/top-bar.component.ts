@@ -14,6 +14,8 @@ export class TopBarComponent implements OnInit {
   username: any;
   userRole: any;
 
+  sidebar: boolean = false;
+
   token: any;
   constructor(
     private router: Router,
@@ -36,11 +38,15 @@ export class TopBarComponent implements OnInit {
 
     }
 
-    // 
-
+    
 
 
   }
+
+  onMobileNavClick(){
+    this.sidebar = !this.sidebar;
+  }
+
 
 
   onSignOut() {
@@ -50,8 +56,8 @@ export class TopBarComponent implements OnInit {
 
     //debugger;
     let obj = {
-      "userId": this.username,
-      "userToken": localStorage.getItem("userToken")
+      "Username": this.username,
+      "Token_generated": localStorage.getItem("userToken")
     }
 
     console.log(obj);

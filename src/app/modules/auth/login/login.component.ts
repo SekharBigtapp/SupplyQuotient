@@ -84,7 +84,7 @@ export class LoginComponent implements OnInit {
           "Password": this.LoginForm.value.password,
         }
       ).subscribe((response) => {
-        alert(response)
+        
         console.log(response)
         //this.onSuccessfullLogin(response);
         this.router.navigateByUrl("dashboard")
@@ -115,8 +115,8 @@ export class LoginComponent implements OnInit {
         if (count > 1) {
           console.log("time is out ===> logout");
           let obj = {
-            "userId": localStorage.getItem("userId"),
-            "userToken": localStorage.getItem("userToken")
+            "Username": localStorage.getItem("userId"),
+            "Token_generated": localStorage.getItem("userToken")
           }
           console.log(obj);
           this.loginService.UserLogout(obj).subscribe({
