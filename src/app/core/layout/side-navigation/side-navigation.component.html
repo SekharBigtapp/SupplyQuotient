@@ -1,12 +1,14 @@
 
- <nav class="sidebar sidebar-offcanvas scrollable-element" id="sidebar">
+
+
+
+  <!-- <nav class="sidebar sidebar-offcanvas scrollable-element" id="sidebar">
   <ul class="nav">
     
     <li class="nav-item ">
       <a class="nav-link d-block text-center" href="index.html">
         <img class="sidebar-brand-logo" src="/assets/images/Bigtap logo_transprant.png" alt="" width="120"/>
         <img class="sidebar-brand-logomini" src="/assets/images/bigtapp-icon.png" alt="" width="62"/>
-        <!-- <div class="small font-weight-light pt-1">Responsive Dashboard</div> -->
       </a>
       
     </li>
@@ -23,19 +25,7 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="dashboard">ARO Dashboard </a>
           </li>
-         <!--  <li class="nav-item">
-            <a class="nav-link" routerLink="optimizeReorder">Optimize Reorder</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="pages/ui-features/buttons.html">Distribution Centers </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="pages/ui-features/dropdowns.html">Supplier Master </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="pages/ui-features/typography.html">Store – Supplier Master</a>
-          </li> -->
-          
+        
           
         </ul>
       </div>
@@ -61,7 +51,6 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLink="/processData/newLauchItem">
-              <!-- <i class=" mdi mdi-new-box menu-icon"></i>  -->
               Upcoming Item Launches</a>
           </li>
         </ul>
@@ -86,12 +75,7 @@
               <i class="mdi mdi-reproduction menu-icon"></i> 
               Phaseout Report </a>
           </li>
-          
-          <!-- <li class="nav-item">
-            <a class="nav-link" routerLink="store2storetransfer">
-              <i class=" mdi mdi-store menu-icon"></i>  
-              Store – Store Transfer </a>
-          </li> -->
+         
           <li class="nav-item">
             <a class="nav-link" routerLink="/transaction/promotionDetails">
               <i class=" mdi mdi-store menu-icon"></i> 
@@ -107,11 +91,7 @@
               <i class="mdi mdi-store-24-hour menu-icon"></i> 
               POS Transactions</a>
           </li>
-          <!-- <li class="nav-item">
-            <a class="nav-link" routerLink="newlauchitem">
-              <i class=" mdi mdi-new-box menu-icon"></i> 
-              Upcoming Item Launches</a>
-          </li> -->
+         
 
           <li class="nav-item">
             <a class="nav-link" routerLink="/transaction/physicalStock">
@@ -167,9 +147,6 @@
       <div class="collapse" id="ui-Admin">
         <ul class="nav flex-column sub-menu">
           
-          <!-- <li class="nav-item">
-            <a class="nav-link" routerLink="/admin/admin"> Admin </a>
-          </li> -->
            <li class="nav-item">
             <a class="nav-link" routerLink="/admin/menu"> Menu</a>
           </li>
@@ -224,5 +201,51 @@
 
 
   </ul>
-  
-</nav> 
+</nav>  -->
+
+
+ <nav id="sidebar" class="sidebar sidebar-offcanvas scrollable-element">
+  <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="collapse" href="#ui-Dashboard" aria-expanded="false" aria-controls="ui-Dashboard">
+          <i class="mdi mdi-crosshairs-gps menu-icon"></i>
+          <span class="menu-title"> Dashboard </span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="ui-Dashboard">
+          <ul class="nav flex-column sub-menu">
+            
+            <li class="nav-item">
+              <a class="nav-link" routerLink="dashboard">ARO Dashboard </a>
+            </li>
+          
+            
+          </ul>
+        </div>
+      </li>
+      <li class="nav-item" *ngFor="let menu of menuList; let i=index">
+          <a class="nav-link" href="#homeSubmenu{{i}}" data-toggle="collapse" [attr.aria-expanded]="selectedIndex === i"
+              aria-expanded="false" (click)="onModule(i)">
+              <i class="mdi mdi-crosshairs-gps menu-icon"></i>
+                <span class="menu-title">  {{menu.moduleName}} </span>
+              <i class="menu-arrow"></i>
+              <!-- <span class="ml-1" *ngIf="sidebar">
+                  <img src="assets/images/sidebar/{{menu.moduleName}}.png" width="20" alt="right arrow" />
+              </span>
+              <span class="ml-1" *ngIf="!sidebar"> {{menu.moduleName}}</span> -->
+          </a>
+          <ng-container *ngIf="selectedIndex === i">
+              <ul class="nav flex-column sub-menu" [ngClass]="{'collapse': this.className === true}"
+                  id="homeSubmenu{{i}}">
+                  <li class="nav-item" style="cursor: pointer;" *ngFor="let m of menu.subModules;"
+                      [ngClass]="{'active': m.subModuleId == menuId }">
+                      <a class="nav-link" (click)="navigateToSubMenu(m)">{{m.subModuleName}}</a>
+                  </li>
+              </ul>
+          </ng-container>
+      </li>
+  </ul>
+</nav>
+
+
+

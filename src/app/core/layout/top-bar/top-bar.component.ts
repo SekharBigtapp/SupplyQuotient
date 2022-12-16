@@ -13,6 +13,7 @@ import { DataStorageService } from '../../services/data-storage.service';
 export class TopBarComponent implements OnInit {
   username: any;
   userRole: any;
+  userToken : any;
 
   sidebar: boolean = false;
 
@@ -26,14 +27,16 @@ export class TopBarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (localStorage.getItem("userId") && (localStorage.getItem("userRole"))) {
-      this.username = localStorage.getItem("userId");
-      this.userRole = localStorage.getItem("userRole");
-      //this.token = localStorage.getItem("token")
-      // if ((username) && (userRole)) {
-      //   this.username = JSON.parse(username);
-      //   this.userRole = JSON.parse(userRole);
-      // }
+    if (localStorage.getItem("LoginData")) {
+      let data = localStorage.getItem("LoginData");
+      if (data) {
+        let loginData = JSON.parse(data);
+        this.username = loginData.userdetails.userId;
+        this.userRole = loginData.userdetails.userRole;
+        this.userToken = loginData.userdetails.userToken;
+        
+      }
+    
 
 
     }
@@ -57,7 +60,7 @@ export class TopBarComponent implements OnInit {
     //debugger;
     let obj = {
       "Username": this.username,
-      "Token_generated": localStorage.getItem("userToken")
+      "Token_generated": this.userToken
     }
 
     console.log(obj);
