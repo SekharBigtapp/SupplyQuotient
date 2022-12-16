@@ -6,7 +6,7 @@ import { ProcessComponent } from './process.component';
 import { SupplierProductCombinationComponent } from './supplier-product-combination/supplier-product-combination.component';
 
 const routes: Routes = [
-    { path: 'process', component: ProcessComponent },
+    { path: 'Process', component: ProcessComponent },
     { path: 'store2storetransfer', component: StoreStoreTransferComponent },
     { path: 'supplierSKUCombination', component:SupplierProductCombinationComponent},
     { path: 'newLauchItem', component: NewItemLaunchDateComponent },

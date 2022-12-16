@@ -35,7 +35,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'processData',
+    path: 'processdata',
     canActivate: [AuthGuard],
     loadChildren: () =>
       import('./modules/process/process.module').then((m) => m.ProcessModule)
