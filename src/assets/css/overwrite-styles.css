@@ -247,7 +247,9 @@ body {
 .scrollable-element::-webkit-scrollbar-thumb:hover {
   background: #0e4444; 
 }
-
+.form-group {
+  margin-bottom: 0rem;
+}
 
 @media (min-width: 992px){
 .sidebar-icon-only  app-side-navigation { width: 70px;}

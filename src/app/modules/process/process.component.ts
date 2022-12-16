@@ -137,6 +137,7 @@ export class ProcessComponent implements OnInit {
     this.storeService.getStoreNames().subscribe((response) => {
       console.log(response);
       this.stores = response;
+      console.log(this.autoStoreValue);
 
       
 
@@ -312,10 +313,10 @@ export class ProcessComponent implements OnInit {
     
    let obj = {
       "Date": this.pipe.transform(this.processForm.value.date, 'yyyy-MM-dd'),
-      "store_name": this.autoStoreValue,
-      "prod_cat": this.autoProducatValue,
-      "prod_subcat":this.autoSubCategoryValue,
-      "prod_name": this.autoStoreValue,
+      "store_name": "",
+      "prod_cat": "",
+      "prod_subcat":"",
+      "prod_name": "",
       "sku_id": "",
       "Blanket_Override": this.blanketOverrideForm.value.BlanketValue
     }
@@ -333,7 +334,7 @@ export class ProcessComponent implements OnInit {
 
   }
   submit() {
-    alert("ok");
+    //alert("ok");
     let obj ={};
     if(this.autoCategoryValue == undefined && this.autoProducatValue == undefined && this.autoStoreValue == undefined){
      obj = {
@@ -418,17 +419,29 @@ export class ProcessComponent implements OnInit {
     
 
   onProdEdit(product: any) {
+    
     product.editMode = true;
     this.overrideReorder = product.Override_Reorder;
   }
 
   onProdSave(product: any) {
     const myFormattedDate = this.pipe.transform(product.Date, 'yyyy-MM-dd');
+    // console.log(product.destn_store_id);
+
     let prodObj = {
-      "Date": myFormattedDate,
-      "article_id": product.article_id,
-      //"Product_Key": product.Product_Key,
-      "final_qty": this.overrideReorder
+      // "Date": myFormattedDate,
+      // "article_id": product.article_id,
+      // //"Product_Key": product.Product_Key,
+      // "final_qty": this.overrideReorder,
+      // "store_id":product.Store_Key
+
+      
+        "Date":myFormattedDate,
+        "store_id":product.destn_store_id,
+        "article_id":product.article_id,
+        "final_qty":this.overrideReorder
+        
+    
     }
     console.log(prodObj)
     this.storeService.saveProduct(prodObj).subscribe((response) => {

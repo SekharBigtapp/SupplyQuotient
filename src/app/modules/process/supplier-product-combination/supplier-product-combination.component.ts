@@ -182,10 +182,10 @@ export class SupplierProductCombinationComponent implements OnInit {
   }
 
   private _filterstore(store_name: string): Store[] {
-    const filterValue = store_name.toLowerCase();
+    const filterValue = store_name;
     this.storevalue=filterValue;
     console.log(this.storevalue)
-    return this.Storeoptions.filter(store => store.store_name.toLowerCase().includes(filterValue));
+    return this.Storeoptions.filter(store => store.store_name.includes(filterValue));
   }
 
   private _filterproduct(prod_name: string): Product[] {
@@ -237,72 +237,74 @@ export class SupplierProductCombinationComponent implements OnInit {
       'sku_id' :  this. supplierForm.value.SKU_CODE ,
       
     }
-  }else if(this.productvalue == undefined){
-    object = {
-      "Date": this.pipe.transform(this.supplierForm.value.date, 'yyyy-MM-dd'),
-      'supp_name': this.supplierForm.value.SupplierName,
-      'store_name' : this.storevalue,
-      'prod_cat' : this.categoryvalue ,
-      'prod_subcat' :  this.supplierForm.value.SubcategoryName ,
-      'prod_name' : this. supplierForm.value.ProductName,
-      'sku_id' :  this. supplierForm.value.SKU_CODE ,      
-    }
-  }else if(this.storevalue == undefined){
-    object = {
-      "Date": this.pipe.transform(this.supplierForm.value.date, 'yyyy-MM-dd'),
-      'supp_name': this.supplierForm.value.SupplierName,
-      'store_name' : this.supplierForm.value.StoreName,
-      'prod_cat' : this.categoryvalue ,
-      'prod_subcat' :  this.supplierForm.value.SubcategoryName ,
-      'prod_name' :this.productvalue,
-      'sku_id' :  this. supplierForm.value.SKU_CODE ,      
-    }
-  } else if(this.categoryvalue == undefined){
-    object = {
-      "Date": this.pipe.transform(this.supplierForm.value.date, 'yyyy-MM-dd'),
-      'supp_name': this.supplierForm.value.SupplierName,
-      'store_name' : this.storevalue,
-      'prod_cat' : this.supplierForm.value.CategoryName ,
-      'prod_subcat' :  this.supplierForm.value.SubcategoryName ,
-      'prod_name' : this.productvalue,
-      'sku_id' :  this. supplierForm.value.SKU_CODE ,
+  }
+  // }else if(this.productvalue == undefined){
+  //   object = {
+  //     "Date": this.pipe.transform(this.supplierForm.value.date, 'yyyy-MM-dd'),
+  //     'supp_name': this.supplierForm.value.SupplierName,
+  //     'store_name' : this.storevalue,
+  //     'prod_cat' : this.categoryvalue ,
+  //     'prod_subcat' :  this.supplierForm.value.SubcategoryName ,
+  //     'prod_name' : this. supplierForm.value.ProductName,
+  //     'sku_id' :  this. supplierForm.value.SKU_CODE ,      
+  //   }
+  // }else if(this.storevalue == undefined){
+  //   object = {
+  //     "Date": this.pipe.transform(this.supplierForm.value.date, 'yyyy-MM-dd'),
+  //     'supp_name': this.supplierForm.value.SupplierName,
+  //     'store_name' : this.supplierForm.value.StoreName,
+  //     'prod_cat' : this.categoryvalue ,
+  //     'prod_subcat' :  this.supplierForm.value.SubcategoryName ,
+  //     'prod_name' :this.productvalue,
+  //     'sku_id' :  this. supplierForm.value.SKU_CODE ,      
+  //   }
+  // } else if(this.categoryvalue == undefined){
+  //   object = {
+  //     "Date": this.pipe.transform(this.supplierForm.value.date, 'yyyy-MM-dd'),
+  //     'supp_name': this.supplierForm.value.SupplierName,
+  //     'store_name' : this.storevalue,
+  //     'prod_cat' : this.supplierForm.value.CategoryName ,
+  //     'prod_subcat' :  this.supplierForm.value.SubcategoryName ,
+  //     'prod_name' : this.productvalue,
+  //     'sku_id' :  this. supplierForm.value.SKU_CODE ,
       
-    }
-  }else if(this.productvalue == undefined && this.storevalue == undefined ){
-    object = {
-      "Date": this.pipe.transform(this.supplierForm.value.date, 'yyyy-MM-dd'),
-      'supp_name': this.supplierForm.value.SupplierName,
-      'store_name' : this.supplierForm.value.StoreName,
-      'prod_cat' : this.categoryvalue ,
-      'prod_subcat' :  this.supplierForm.value.SubcategoryName ,
-      'prod_name' : this. supplierForm.value.ProductName,
-      'sku_id' :  this. supplierForm.value.SKU_CODE ,
+  //   }
+  // }else if(this.productvalue == undefined && this.storevalue == undefined ){
+  //   object = {
+  //     "Date": this.pipe.transform(this.supplierForm.value.date, 'yyyy-MM-dd'),
+  //     'supp_name': this.supplierForm.value.SupplierName,
+  //     'store_name' : this.supplierForm.value.StoreName,
+  //     'prod_cat' : this.categoryvalue ,
+  //     'prod_subcat' :  this.supplierForm.value.SubcategoryName ,
+  //     'prod_name' : this. supplierForm.value.ProductName,
+  //     'sku_id' :  this. supplierForm.value.SKU_CODE ,
       
-    }
-  }else if(this.storevalue == undefined && this.categoryvalue == undefined){
-    object = {
-      "Date": this.pipe.transform(this.supplierForm.value.date, 'yyyy-MM-dd'),
-      'supp_name': this.supplierForm.value.SupplierName,
-      'store_name' : this.supplierForm.value.StoreName,
-      'prod_cat' : this.supplierForm.value.CategoryName ,
-      'prod_subcat' :  this.supplierForm.value.SubcategoryName ,
-      'prod_name' : this.productvalue,
-      'sku_id' :  this. supplierForm.value.SKU_CODE ,
+  //   }
+  // }else if(this.storevalue == undefined && this.categoryvalue == undefined){
+  //   object = {
+  //     "Date": this.pipe.transform(this.supplierForm.value.date, 'yyyy-MM-dd'),
+  //     'supp_name': this.supplierForm.value.SupplierName,
+  //     'store_name' : this.supplierForm.value.StoreName,
+  //     'prod_cat' : this.supplierForm.value.CategoryName ,
+  //     'prod_subcat' :  this.supplierForm.value.SubcategoryName ,
+  //     'prod_name' : this.productvalue,
+  //     'sku_id' :  this. supplierForm.value.SKU_CODE ,
       
-    }
+  //   }
 
-  }else if(this.productvalue == undefined && this.categoryvalue == undefined ){
-    object = {
-      "Date": this.pipe.transform(this.supplierForm.value.date, 'yyyy-MM-dd'),
-      'supp_name': this.supplierForm.value.SupplierName,
-      'store_name' : this.storevalue,
-      'prod_cat' : this.supplierForm.value.CategoryName ,
-      'prod_subcat' :  this.supplierForm.value.SubcategoryName ,
-      'prod_name' : this. supplierForm.value.ProductName,
-      'sku_id' :  this. supplierForm.value.SKU_CODE ,
+  // }else if(this.productvalue == undefined && this.categoryvalue == undefined ){
+  //   object = {
+  //     "Date": this.pipe.transform(this.supplierForm.value.date, 'yyyy-MM-dd'),
+  //     'supp_name': this.supplierForm.value.SupplierName,
+  //     'store_name' : this.storevalue,
+  //     'prod_cat' : this.supplierForm.value.CategoryName ,
+  //     'prod_subcat' :  this.supplierForm.value.SubcategoryName ,
+  //     'prod_name' : this. supplierForm.value.ProductName,
+  //     'sku_id' :  this. supplierForm.value.SKU_CODE ,
       
-    }
-  }else{
+  //   }
+  // }
+  else{
     object = {
       "Date": this.pipe.transform(this.supplierForm.value.date, 'yyyy-MM-dd'),
       'supp_name': this.supplierForm.value.SupplierName,
