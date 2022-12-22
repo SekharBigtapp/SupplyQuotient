@@ -37,6 +37,9 @@ body, .mat-table {
       font-size: 12px;
       line-height: 1.5; }
 
+      .content-wrapper {
+        padding: 25px 30px;
+      }
 .main-layout {
     min-height: 500px;
 }
@@ -83,6 +86,7 @@ table .mdi, table .fa { font-size: 20px;}
 .table thead{
 background: linear-gradient(to right, #dcd5e6, #bbb3cf);
 }
+.table-responsive { border-radius: 20px;}
 .master-data .color-card:hover{ opacity: 0.75;}
 .page-body-wrapper { margin-top: 20px;}
 
