@@ -137,6 +137,7 @@ export class ProcessComponent implements OnInit {
     this.storeService.getStoreNames().subscribe((response) => {
       console.log(response);
       this.stores = response;
+      console.log(this.autoStoreValue);
 
       
 
@@ -333,7 +334,7 @@ export class ProcessComponent implements OnInit {
 
   }
   submit() {
-    alert("ok");
+    //alert("ok");
     let obj ={};
     if(this.autoCategoryValue == undefined && this.autoProducatValue == undefined && this.autoStoreValue == undefined){
      obj = {
@@ -418,12 +419,15 @@ export class ProcessComponent implements OnInit {
     
 
   onProdEdit(product: any) {
+    
     product.editMode = true;
     this.overrideReorder = product.Override_Reorder;
   }
 
   onProdSave(product: any) {
     const myFormattedDate = this.pipe.transform(product.Date, 'yyyy-MM-dd');
+    // console.log(product.destn_store_id);
+
     let prodObj = {
       "Date": myFormattedDate,
       "article_id": product.article_id,
