@@ -244,9 +244,10 @@
           <ng-container *ngIf="selectedIndex === i">
               <ul class="nav flex-column sub-menu" [ngClass]="{'collapse': this.className === true}"
                   id="homeSubmenu{{i}}">
-                  <li class="nav-item" style="cursor: pointer;" *ngFor="let m of menu.subModules;"
+                  <li class="nav-item" title="{{m.Tooltip}}" style="cursor: pointer;" *ngFor="let m of menu.subModules;"
                       [ngClass]="{'active': m.subModuleId == menuId }">
-                      <a class="nav-link" (click)="navigateToSubMenu(m)">{{m.subModuleName}}</a>
+                      <a class="nav-link" (click)="navigateToSubMenu(m)" >{{m.subModuleName}}</a>
+                      
                   </li>
               </ul>
           </ng-container>

@@ -45,6 +45,8 @@ export class ProcessComponent implements OnInit {
   @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort!: MatSort;
   minDate = new Date("8-1-2022");
+
+  TodayDate = "2022-10-18";
   //storeNameList: any;
   //productNameList: any;
   //subCategoryNameList: any;
@@ -75,13 +77,17 @@ export class ProcessComponent implements OnInit {
   categoryNameField:any;
   storeNameField:any;
 
+  
+
   constructor(private http: HttpClient, private storeService: StoreService,
-    private formBuilder: FormBuilder) { }  
+    private formBuilder: FormBuilder) {
+
+     }  
 
   ngOnInit(): void {   
    
     this.processForm = this.formBuilder.group({
-      date: [''],
+      date: [this.TodayDate],
       store_name: [''],
       ProductCateg: [''],
       SubCategories: [''],
@@ -94,6 +100,7 @@ export class ProcessComponent implements OnInit {
     this.blanketOverrideForm = this.formBuilder.group({
       BlanketValue: [""],
     });
+    this.submit();
     this.init();
     this.getStoresNamesList();
     this.getProductNamesList();    

@@ -38,7 +38,7 @@ export class SystemconfigComponent implements OnInit {
   monthlyForm!: FormGroup;
   pipe = new DatePipe('en-US');
 
-  displayColumns: string[] = ['product_name', 'category', 'sub_category', 'frequency', 'weekly_day', 'Actions']
+  displayColumns: string[] = ['store_name','product_name', 'category', 'sub_category', 'frequency', 'weekly_day', 'Actions']
 
   checkvalue: boolean = true;
   productNameList: any;

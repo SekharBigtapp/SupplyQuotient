@@ -87,8 +87,8 @@
                                 <label mat-sort-header>
                                   S.No
                                 </label>
-                                <input type="text" (keyup)="updatePagination()" [(ngModel)]="filterData.filterColumnNames[0].Value"
-                                [filter]="filterData" />                               
+                                <!-- <input type="text" (keyup)="updatePagination()" [(ngModel)]="filterData.filterColumnNames[0].Value"
+                                [filter]="filterData" />                                -->
                               </th>
                               <td mat-cell *matCellDef="let element"> {{element.sno}} </td>
                             </ng-container>
@@ -100,8 +100,8 @@
                                 <label mat-sort-header>
                                   Roll Name
                                 </label><br>
-                                <input type="text" (keyup)="updatePagination()"
-                                [(ngModel)]="filterData.filterColumnNames[1].Value" [filter]="filterData" />
+                                <!-- <input type="text" (keyup)="updatePagination()"
+                                [(ngModel)]="filterData.filterColumnNames[1].Value" [filter]="filterData" /> -->
                               </th>
                               
                               <td mat-cell *matCellDef="let element"> {{element.Rolename}} </td>
