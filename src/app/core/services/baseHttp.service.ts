@@ -60,8 +60,8 @@ export abstract class BaseHttp {
         
         const header = new HttpHeaders({
             'Content-Type': 'application/json',
-           // 'token': bearer
-            //'Authorization': `Bearer ` + bearer,
+           'token': bearer
+           // 'Authorization': `Bearer ` + bearer,
         });
         return this.http
             .post<T>(environment.url + url, JSON.stringify(body), { headers: header })

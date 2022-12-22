@@ -62,6 +62,7 @@ import { RolesComponent } from './modules/admin/roles/roles.component';
 import { SubMenuComponent } from './modules/admin/sub-menu/sub-menu.component';
 import { MenuComponent } from './modules/admin/menu/menu.component';
 import { UserIdleModule } from 'angular-user-idle';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -114,6 +115,7 @@ import { UserIdleModule } from 'angular-user-idle';
     AppRoutingModule,
     ConfigurationModule,
     FormsModule,
+    SharedModule,   
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,

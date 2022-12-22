@@ -144,7 +144,7 @@ export class LoginComponent implements OnInit {
     localStorage.clear();
     this.dataStorage.isUserLoggedIn = true;
     localStorage.setItem("LoginData", JSON.stringify(response));
-    localStorage.setItem("userToken", response.userToken);
+    localStorage.setItem("userToken", response.userdetails.userToken);
     let data = localStorage.getItem("LoginData");
     if (data) {
       this.loginData = JSON.parse(data);

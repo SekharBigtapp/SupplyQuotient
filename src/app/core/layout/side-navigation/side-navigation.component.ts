@@ -30,7 +30,7 @@ export class SideNavigationComponent implements OnInit {
       let data = localStorage.getItem("LoginData");
       if (data) {
         this.loginData = JSON.parse(data);
-        this.menuList = this.loginData.permissions;
+        this.menuList = this.loginData.permissionlist;
         console.log("Login Data", this.menuList);
         localStorage.setItem("MenuList", JSON.stringify(this.menuList));
       }

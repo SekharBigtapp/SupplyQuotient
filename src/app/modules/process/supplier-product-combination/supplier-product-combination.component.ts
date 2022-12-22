@@ -5,11 +5,12 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { map, startWith } from 'rxjs';
+import { map, Observable, startWith } from 'rxjs';
 import { SupplierService } from './supplier-product-services';
 
 export interface Store {
   store_name: string; 
+  
 }
 export interface Product {
   prod_name: string; 
@@ -47,7 +48,7 @@ export class SupplierProductCombinationComponent implements OnInit {
 
   storename = new FormControl<string | Store>('');
   Storeoptions: Store[] =[];
- storeNameList: any;
+ storeNameList:  Observable<Store[]> | undefined;
 
   productname = new FormControl<string | Product>('');
   ProductOptions: Product[] = [];
@@ -71,6 +72,10 @@ export class SupplierProductCombinationComponent implements OnInit {
   autoSubCategoryValue:any;
   autoCategoryValue:any;
 
+
+
+  
+
   
 
   constructor( private http: HttpClient, private supplierService:SupplierService ,
@@ -84,6 +89,9 @@ export class SupplierProductCombinationComponent implements OnInit {
         return store_name ? this._filterstore(store_name as string) : this.Storeoptions.slice();
       }),
     );
+
+    
+
     this.productNameList = this.productname.valueChanges.pipe(
       startWith(''),
       map(value => {
@@ -126,6 +134,13 @@ export class SupplierProductCombinationComponent implements OnInit {
     });
 
   }
+
+ 
+  displayFn(user: Store): string {
+    return user && user.store_name ? user.store_name : '';
+  }
+
+
 
   private _filterSubCategory(prod_subcat: string): SubCatName[] {
     const filterValueSub = prod_subcat;

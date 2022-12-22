@@ -206,6 +206,13 @@
 
  <nav id="sidebar" class="sidebar sidebar-offcanvas scrollable-element">
   <ul class="nav">
+    <li class="nav-item ">
+      <a class="nav-link d-block text-center" href="index.html">
+        <img class="sidebar-brand-logo" src="/assets/images/Bigtap logo_transprant.png" alt="" width="120"/>
+        <img class="sidebar-brand-logomini" src="/assets/images/bigtapp-icon.png" alt="" width="62"/>
+      </a>
+      
+    </li>
       <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#ui-Dashboard" aria-expanded="false" aria-controls="ui-Dashboard">
           <i class="mdi mdi-crosshairs-gps menu-icon"></i>
@@ -227,7 +234,7 @@
           <a class="nav-link" href="#homeSubmenu{{i}}" data-toggle="collapse" [attr.aria-expanded]="selectedIndex === i"
               aria-expanded="false" (click)="onModule(i)">
               <i class="mdi mdi-crosshairs-gps menu-icon"></i>
-                <span class="menu-title">  {{menu.moduleName}} </span>
+                <span class="menu-title">  {{menu.Modulename}} </span>
               <i class="menu-arrow"></i>
               <!-- <span class="ml-1" *ngIf="sidebar">
                   <img src="assets/images/sidebar/{{menu.moduleName}}.png" width="20" alt="right arrow" />

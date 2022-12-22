@@ -130,7 +130,7 @@ this.distributinoCenterService.getDistributionFilter(obj).subscribe((response) =
       "dc_cntry": this.distributionCenterform.value.country,
       "dc_region": this.distributionCenterform.value.state,
       "dc_city": this.distributionCenterform.value.city,
-      "dc_code": this.distributionCenterform.value.distributionCenterID,
+      "dc_id": this.distributionCenterform.value.distributionCenterID,
       "dc_name": this.distributionCenterform.value.distributionCentralName
     }
     this.distributinoCenterService.getDistributionCenters(obj).subscribe((response) => {

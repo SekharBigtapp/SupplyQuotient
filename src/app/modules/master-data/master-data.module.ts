@@ -20,6 +20,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { AddNewDistributionCenterComponent } from './distribution-center/add-new-distribution-center/add-new-distribution-center.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    SharedModule,
     FormsModule,
     ReactiveFormsModule,
     MatInputModule,

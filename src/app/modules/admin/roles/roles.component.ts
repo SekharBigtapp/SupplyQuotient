@@ -34,13 +34,10 @@ export class RolesComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,private roleservices:RolesService) { }
 
-  ngOnInit(): void {
-   
-    this.filterData = {
-    
+  ngOnInit(): void {   
+    this.filterData = {    
       filterColumnNames: [
         { "Key": 'sno', "Value": "" },
-        {"Key": 'Id',"Value":""},
         { "Key": 'Rolename', "Value": "" },
       ],
       gridData: this.gridData,
@@ -83,9 +80,7 @@ export class RolesComponent implements OnInit {
     });
   }
 
-  
   updatePagination() {
-    console.log(this.filterData.dataSource)
     this.filterData.dataSource.paginator = this.paginator;
   }
 
@@ -142,6 +137,8 @@ export class RolesComponent implements OnInit {
     });
 
   }
+
+ 
 
   onDeleteRole(val:any){
     console.log(val);

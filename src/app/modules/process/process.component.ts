@@ -312,10 +312,10 @@ export class ProcessComponent implements OnInit {
     
    let obj = {
       "Date": this.pipe.transform(this.processForm.value.date, 'yyyy-MM-dd'),
-      "store_name": this.autoStoreValue,
-      "prod_cat": this.autoProducatValue,
-      "prod_subcat":this.autoSubCategoryValue,
-      "prod_name": this.autoStoreValue,
+      "store_name": "",
+      "prod_cat": "",
+      "prod_subcat":"",
+      "prod_name": "",
       "sku_id": "",
       "Blanket_Override": this.blanketOverrideForm.value.BlanketValue
     }
@@ -427,6 +427,7 @@ export class ProcessComponent implements OnInit {
     let prodObj = {
       "Date": myFormattedDate,
       "article_id": product.article_id,
+      "store_id":product.destn_store_id,
       //"Product_Key": product.Product_Key,
       "final_qty": this.overrideReorder
     }

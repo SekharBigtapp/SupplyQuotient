@@ -11,6 +11,7 @@ import { AdminRoutingModule } from './admin.routing.module';
 import { AdminComponent } from './admin.component';
 import { DialogComponent } from 'src/app/dialog/dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 
@@ -26,6 +27,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatPaginatorModule,
     MatSortModule,
     FormsModule,
+    SharedModule,
     ReactiveFormsModule,
     MatInputModule,
     MatFormFieldModule,

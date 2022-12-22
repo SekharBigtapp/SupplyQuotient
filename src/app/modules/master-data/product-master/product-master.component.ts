@@ -48,6 +48,11 @@ export class ProductMasterComponent implements OnInit {
   autovalueProduct:any;
   autovalueCategory:any;
 
+  selectedIndex : any;
+  selectedValue : any;
+  filterData:any;
+  
+
 
   constructor(
     private router: Router,
@@ -55,9 +60,10 @@ export class ProductMasterComponent implements OnInit {
     private formBuilder: FormBuilder
   ) { }
 
-  ngOnInit(): void {     
+  ngOnInit(): void {
+    
     this.productNameList = this.productName.valueChanges.pipe(
-      startWith(''),
+      startWith(null),
       map(value => {
         const prod_name = typeof value === 'string' ? value : value?.prod_name;
         return prod_name ? this._filter(prod_name as string) : this.options.slice();
@@ -115,6 +121,7 @@ export class ProductMasterComponent implements OnInit {
     this.autovalueCategory = "";
     console.log(this.productMasterForm);
   }
+  
 
   private _filter(prod_name: string): User[] {
     const filterValue = prod_name.toLowerCase();
@@ -161,6 +168,13 @@ export class ProductMasterComponent implements OnInit {
     // this.storeData.sort = this.sort;
   })  
  }
+
+ updatePagination(){
+  
+    this.productdata.paginator = this.paginator;
+  
+ }
+ 
  
  fechingDataProductName(productname:any){
    let  obj = {    
@@ -219,6 +233,7 @@ export class ProductMasterComponent implements OnInit {
       this.productdata = new MatTableDataSource(response[0]);
       this.productdata.paginator = this.paginator;
       this.productdata.sort = this.sort;
+      
     })
   }
   onProdEdit(element: any) { }
