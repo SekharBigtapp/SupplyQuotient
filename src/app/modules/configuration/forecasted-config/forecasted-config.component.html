@@ -32,23 +32,79 @@
             <div class="card-body pb-5">
 
               <div class="mb-3">
-                <h3 class="d-inline-block"> Backtesting - Forecasting </h3>
+                <h3 class="d-inline-block"> Forecasting </h3>
 
               </div>
               <div class="clearfix"></div>
 
               <ul class="nav nav-tabs" role="tablist">
                 <li class="nav-item">
-                  <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"> Backtesting </a>
+                  <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">Forecast  </a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab"> Forecasting Configuration </a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link " data-toggle="tab" href="#tabs-3" role="tab"> Backtesting </a>
+                </li>
+                
 
               </ul>
 
               <div class="tab-content">
-                <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                <div class="tab-pane active" id="tabs-1" role="tabpane1">
+                  <div class="clearfix"></div>
+
+                  <div class="product-filters">
+
+                    <div class="card">
+                      <div class="card-body">
+
+                        <iframe title="Forecast Overview Dashboard" width="100%" 
+                        height="850" src="https://app.powerbi.com/reportEmbed?reportId=8959498d-1f59-449d-8fbd-8a4c43bdc9c1&autoAuth=true&ctid=9f2e2b7d-6081-4b3a-b7f5-433b581f6a5f&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXNvdXRoLWVhc3QtYXNpYS1yZWRpcmVjdC5hbmFseXNpcy53aW5kb3dzLm5ldC8ifQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
+
+                      </div>
+                    </div>
+
+                  </div>
+
+                 
+
+                </div>
+
+                
+
+                <div class="tab-pane" id="tabs-2" role="tabpanel">
+
+                  <div class="col-md-12">
+                    <div class=" pl-5"> <br> <br>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                          value="P10" (change)="onPValuesClick('P10')" checked>
+                        <label class="form-check-label ml-1" for="inlineRadio1"> P10 </label>
+                      </div> &nbsp; &nbsp;
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                          value="P50" (change)="onPValuesClick('P50')">
+                        <label class="form-check-label ml-1" for="inlineRadio2"> P50 </label>
+                      </div> &nbsp; &nbsp;
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3"
+                          value="P90" (change)="onPValuesClick('P90')">
+                        <label class="form-check-label ml-1" for="inlineRadio3">P90</label>
+                      </div>
+                      <div class="ml-2 pl-4 d-inline-block" style="    margin-left: 30px;   vertical-align: super;">
+                        <button type="submit" class=" btn btn-sm btn-primary btn-rounded  btn-icon-text">
+                          <i class="mdi mdi-checkbox-marked-circle-outline"></i> Save </button>
+                      </div>
+
+                    </div>
+                  </div>
+
+                </div>
+
+
+                <div class="tab-pane" id="tabs-3" role="tabpane3">
                   <div class="clearfix"></div>
 
                   <div class="product-filters">
@@ -154,7 +210,7 @@
                   <div class="clearfix"></div>
                   <div class="table-responsive ">
                     <table mat-table [dataSource]="forecastMasterData"  matSort
-                      class="mat-elevation-z8 mat-datagrid w-100 table-bordered">
+                      class="mat-elevation-z8 mat-datagrid w-100 ">
 
                       <ng-container matColumnDef="date">
                         <th mat-header-cell *matHeaderCellDef scope="col">
@@ -304,35 +360,6 @@
                     <mat-paginator [pageSize]="pageSize" [hidden]="!forecastMasterData" [pageSizeOptions]="[10, 25, 50]"
                       aria-label="Select page">
                     </mat-paginator>
-                  </div>
-
-                </div>
-
-                <div class="tab-pane" id="tabs-2" role="tabpanel">
-
-                  <div class="col-md-12">
-                    <div class=" pl-5"> <br> <br>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                          value="P10" (change)="onPValuesClick('P10')" checked>
-                        <label class="form-check-label ml-1" for="inlineRadio1"> P10 </label>
-                      </div> &nbsp; &nbsp;
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
-                          value="P50" (change)="onPValuesClick('P50')">
-                        <label class="form-check-label ml-1" for="inlineRadio2"> P50 </label>
-                      </div> &nbsp; &nbsp;
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3"
-                          value="P90" (change)="onPValuesClick('P90')">
-                        <label class="form-check-label ml-1" for="inlineRadio3">P90</label>
-                      </div>
-                      <div class="ml-2 pl-4 d-inline-block" style="    margin-left: 30px;   vertical-align: super;">
-                        <button type="submit" class=" btn btn-sm btn-primary btn-rounded  btn-icon-text">
-                          <i class="mdi mdi-checkbox-marked-circle-outline"></i> Save </button>
-                      </div>
-
-                    </div>
                   </div>
 
                 </div>

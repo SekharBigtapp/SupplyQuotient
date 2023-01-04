@@ -63,6 +63,7 @@ import { SubMenuComponent } from './modules/admin/sub-menu/sub-menu.component';
 import { MenuComponent } from './modules/admin/menu/menu.component';
 import { UserIdleModule } from 'angular-user-idle';
 import { SharedModule } from './shared/shared.module';
+import { RolePermissionsComponent } from './modules/admin/role-permissions/role-permissions.component';
 
 @NgModule({
   declarations: [
@@ -103,6 +104,7 @@ import { SharedModule } from './shared/shared.module';
     // SchedulingConfigComponent,
     UsersComponent,
     RolesComponent,
+    RolePermissionsComponent,
     SubMenuComponent,
     AddUserComponent,
     MenuComponent,
